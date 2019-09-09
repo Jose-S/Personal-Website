@@ -5,18 +5,28 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@loadable/component": "^5.10.2",
+    "@tippy.js/react": "^2.2.3",
+    "@types/loadable__component": "^5.10.0",
     "gatsby": "^2.13.73",
+    "gatsby-cli": "^2.7.44",
     "gatsby-image": "^2.2.10",
     "gatsby-plugin-manifest": "^2.2.6",
     "gatsby-plugin-offline": "^2.2.7",
     "gatsby-plugin-react-helmet": "^3.1.4",
     "gatsby-plugin-sharp": "^2.2.13",
+    "gatsby-plugin-typescript": "^2.1.6",
     "gatsby-source-filesystem": "^2.1.11",
+    "gatsby-source-wordpress": "^3.1.28",
     "gatsby-transformer-sharp": "^2.2.7",
+    "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-helmet": "^5.2.1"
+    "react-gutenberg": "^0.5.1",
+    "react-helmet": "^5.2.1",
+    "react-typed": "^1.2.0",
+    "typed.js": "^2.0.10"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

@@ -1,21 +1,70 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
+import WPGBlocks from "react-gutenberg"
+import { WPGBlock } from "react-gutenberg"
+import GetCustomBlock from "../components/blocks"
+import styles from "../styles/large-title.module.css"
+import ProjectItems from "../components/ProjectItems"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <StaticQuery
+      query={graphql`
+        {
+          allWordpressPage(filter: { title: { eq: "Work" } }) {
+            edges {
+              node {
+                id
+                slug
+                title
+                blocks {
+                  blockName
+                  innerHTML
+                  attrs {
+                    inline_text
+                    first_text
+                    second_text
+                    third_text
+                    blockId
+                    blockUniqueClass
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={props => (
+        <div className={styles.center}>
+          <h3 className={styles.largeWorkTitle}>
+            <WPGBlock
+              block={props.allWordpressPage.edges[0].node.blocks[0]}
+              mapToBlock={GetCustomBlock}
+            />
+            &nbsp;
+            <WPGBlock
+              block={props.allWordpressPage.edges[0].node.blocks[2]}
+              mapToBlock={GetCustomBlock}
+            />
+            &nbsp;
+            <WPGBlock
+              block={props.allWordpressPage.edges[0].node.blocks[4]}
+              mapToBlock={GetCustomBlock}
+            />
+          </h3>
+        </div>
+      )}
+    />
+    <ProjectItems />
   </Layout>
 )
 
+//   < WPGBlocks
+// blocks = { props.allWordpressPage.edges[0].node.blocks }
+// mapToBlock = { GetCustomBlock }
+//   ></WPGBlocks >
 export default IndexPage
