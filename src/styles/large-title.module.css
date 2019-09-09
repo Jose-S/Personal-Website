@@ -1,0 +1,11 @@
+.largeWorkTitle {
+   display: inline-block;
+   text-align: center;
+   letter-spacing: 0.25px;
+   font-weight: 500;
+   width: 75%;
+}
+
+.center {
+   text-align: center;
+}
