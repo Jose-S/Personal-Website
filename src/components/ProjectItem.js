@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import styles from "../styles/project-item.module.css"
+import styles from "../styles/project-item.module.scss"
 import Tippy from "@tippy.js/react"
 
 // Import the Google theme from tippy.js

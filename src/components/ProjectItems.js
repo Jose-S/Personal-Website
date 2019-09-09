@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
 import ProjectItem from "./ProjectItem"
-import styles from "../styles/project-item.module.css"
+import styles from "../styles/project-item.module.scss"
 
 const ProjectItems = () => {
   return (

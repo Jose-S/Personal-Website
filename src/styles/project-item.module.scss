@@ -1,8 +1,15 @@
+@import "./Global/grid_layouts.scss";
+
 .item_grid {
-   display: inline-grid;
-   width: 100%;
-   grid-template-columns: auto auto auto;
-   grid-gap: 32px;
+   // display: inline-grid;
+   // width: 100%;
+   // grid-template-columns: auto auto auto;
+   // grid-gap: 32px;
+   @include grid(32px, 32px);
+   @include gridAuto(298px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .container {

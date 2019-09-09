@@ -1,0 +1,87 @@
+// Claudia Romano's medium article about implementing 
+// design sytems  using css was used to
+//  create my websites css library
+// https://medium.com/codyhouse/create-your-design-system-part-2-grid-layout-aa961d59b8d6
+
+// -------------GRID------------------------
+
+// USAGE OF MIXING
+// .example-grid {
+//    @include grid;
+//    @include gridAuto(260px);
+// }
+
+$gap-horizontal: 16px;
+$gap-vertical: $gap-horizontal;
+
+// A CSS variable for reasuing the grid layout
+@mixin grid($gap-h: $gap-horizontal, $gap-v: $gap-vertical) {
+
+   // If the browser supports css grids
+   @supports(grid-area: auto) {
+      display: grid;
+      grid-column-gap: $gap-h;
+      grid-row-gap: $gap-v;
+   }
+}
+
+// Mixing creating auto-size grid gallery
+@mixin gridAuto($min-width) {
+   @supports(grid-area: auto) {
+      // Repeat funtion is used to apply the
+      // min width (minmax) of each element using this class
+      // 1fr ensures that all allements take up equal space
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+      grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+   }
+}
+
+// -------------2D Layout------------------------
+// MIxIn used to create a layout where we can control the height and 
+// width of each elemnt on a 12 part grid
+
+// USAGE OF MIXING
+// .example-grid {
+//    @include grid;
+//    @include gridLayout((7, 2),
+//       //item 1 (take up 7 columns and 2 row)
+//       (5, 1), //item 2
+//       (5, 1), //item 3
+//       (12, 1) //item 4
+//    );
+// }
+
+// I'm using a 12 parrt grid
+$grid-columns: 12;
+
+// Accepts as arguamnets a list of pair of numbers 
+// For each element of the layout a par of numbers will need to be passed
+// PAIR FORMAT: (# of cols occupied by element, # of rows occupied by element)
+// The second number is optional. If not added then the content will automatically 
+// decide the rows occupied
+@mixin gridLayout($cols...) {
+   @supports(grid-area: auto) {
+      grid-template-columns: repeat($grid-columns, 1fr);
+   }
+
+   // counter variable
+   $i: 1;
+
+   // For each one of the pairs passed to the mixin
+   // select the corresponding element (nth-of-type selector)
+   //@at-root and place it to the grid (span keyboard) 
+   @each $col in $cols {
+      > :nth-of-type(#{$i}) {
+         // specify the item's end position within the grid col
+         grid-column-end: span nth($col, 1);
+
+         // If a value is present for the row
+         // specify the item's end position within the grid row
+         @if length($col)>1 {
+            grid-row-end: span nth($col, 2);
+         }
+      }
+
+      $i: $i+1;
+   }
+}

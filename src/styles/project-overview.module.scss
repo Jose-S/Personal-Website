@@ -1,0 +1,7 @@
+@import "./Global/grid_layouts.scss";
+
+.split_container {
+   @include grid;
+   // grid-auto-rows: 120px;
+   @include gridLayout((5) (7));
+}

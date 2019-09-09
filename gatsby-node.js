@@ -38,6 +38,9 @@ exports.createPages = async ({ graphql, actions }) => {
               challenges
               roles
               timeline
+              ui_gif {
+                source_url
+              }
             }
             blocks {
               blockName
