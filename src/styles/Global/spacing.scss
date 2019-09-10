@@ -1,0 +1,90 @@
+:root {
+   // 16px default // EM based on default font size set to 20px
+   // --space-unit: 0.8em;
+   --space-unit: 16px;
+   // --sapce-unit: 1rem;
+   --space-xxs: calc(0.25 * var(--space-unit)); //4px
+   --space-xs: calc(0.5 * var(--space-unit)); // 8px
+   --space-sm: calc(0.75 * var(--space-unit)); // 12px
+   --space-md: calc(1.5 * var(--space-unit)); // 24px
+   --space-lg: calc(2 * var(--space-unit)); // 32px
+   --space-xl: calc(3 * var(--space-unit)); //48 px
+   --space-xxl: calc(4 * var(--space-unit)); //64px
+   --space-xxxl: calc(4.5 * var(--space-unit)); //72px
+   --space-xxxl: calc(6 * var(--space-unit)); //96px
+
+   /* components padding */
+   --component-padding: var(--space-unit);
+}
+
+.component {
+   padding: var(--component-padding);
+}
+
+// Margin Utility classes for setting layout stuff
+@mixin margin-top {
+   margin-top: var(--space-unit);
+}
+
+@mixin margin-top--md {
+   margin-top: var(--space-md);
+}
+
+
+@mixin margin-top--xxs {
+   margin-top: var(--space-xxs);
+}
+
+@mixin margin-top--xs {
+   margin-top: var(--space-xs);
+}
+
+@mixin margin-top--sm {
+   margin-top: var(--space-sm);
+}
+
+@mixin margin-top--lg {
+   margin-top: var(--space-lg);
+}
+
+@mixin margin-top--xl {
+   margin-top: var(--space-xl);
+}
+
+@mixin margin-top--xxl {
+   margin-top: var(--space-xxl);
+}
+
+
+@mixin margin-bottom {
+   margin-bottom: var(--space-unit);
+}
+
+@mixin margin-bottom--md {
+   margin-bottom: var(--space-md);
+}
+
+@mixin margin-bottom--xxs {
+   margin-bottom: var(--space-xxs);
+}
+
+
+@mixin margin-bottom--xs {
+   margin-bottom: var(--space-xs);
+}
+
+@mixin margin-bottom--sm {
+   margin-bottom: var(--space-sm);
+}
+
+@mixin margin-bottom--lg {
+   margin-bottom: var(--space-lg);
+}
+
+@mixin margin-bottom--xl {
+   margin-bottom: var(--space-xl);
+}
+
+@mixin margin-bottom--xxl {
+   margin-bottom: var(--space-xxl);
+}
