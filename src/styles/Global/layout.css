@@ -4,6 +4,7 @@ HOW IT WORKS: All pages have a layout componnet wrapper. THe layout componnet
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 @import url('https://rsms.me/inter/inter.css');
+@import "./spacing.scss";
 
 :root {
 
@@ -59,6 +60,8 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hides any X horizontal overlow elements */
+  overflow-x: hidden;
 }
 
 /* text size */

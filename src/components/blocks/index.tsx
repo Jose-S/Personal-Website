@@ -5,6 +5,7 @@ const RotatingTextAnimation = loadable(() =>
   import("./rotating-type-animation")
 )
 const InlineText = loadable(() => import("./inlineText"))
+const ProcessHeader = loadable(() => import("./process-header"))
 
 export default function GetCustomBlock(name: string) {
   switch (name) {
@@ -12,6 +13,8 @@ export default function GetCustomBlock(name: string) {
       return RotatingTextAnimation
     case "lazyblock/inline-text":
       return InlineText
+    case "lazyblock/process-header":
+      return ProcessHeader
     default:
       return null
   }

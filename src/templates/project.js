@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import WPGBlocks from "react-gutenberg"
 import ProjectOverview from "../components/ProjectOverview.js"
+import GetCustomBlock from "../components/blocks"
 
 export default ({ pageContext }) => <Layout>{setContent(pageContext)}</Layout>
 
@@ -10,7 +11,10 @@ function setContent(pageContext) {
     return (
       <div>
         <ProjectOverview props={pageContext}></ProjectOverview>
-        <WPGBlocks blocks={pageContext.blocks}></WPGBlocks>
+        <WPGBlocks
+          blocks={pageContext.blocks}
+          mapToBlock={GetCustomBlock}
+        ></WPGBlocks>
       </div>
     )
   } else {

@@ -1,7 +1,36 @@
 @import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
 
 .split_container {
    @include grid;
    // grid-auto-rows: 120px;
-   @include gridLayout((5) (7));
+   @include gridLayout((6) (6));
+}
+
+.overview_label {
+   @include margin-top--md;
+   @include margin-bottom--xs;
+   text-transform: uppercase;
+}
+
+.overview_img {
+   position: absolute;
+   right: -450px;
+   width: 80%;
+   height: auto;
+}
+
+.overview_p {
+
+   margin: 0;
+}
+
+.overview_title {
+   margin: calc(var(--space-xxs) * 0.85) 0;
+   color: #ffd137;
+}
+
+.overview_subtitle {
+   margin-top: calc(var(--space-xxs) * 0.85);
+   color: #F2C94C;
 }

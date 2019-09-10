@@ -17,22 +17,22 @@ class ProjectOverview extends Component {
     console.log("UI GIF", ui_gif)
     return (
       <div>
-        <h1>{`${title}.`}</h1>
-        <h3>{subtitle}</h3>
+        <h1 className={styles.overview_title}>{`${title}.`}</h1>
+        <h3 className={styles.overview_subtitle}>{subtitle}</h3>
 
         <div className={styles.split_container}>
           <div>
-            <h5>Overview</h5>
-            <p>{overview}</p>
-            <h5>Challenges</h5>
-            <p>{challenges}</p>
-            <h5>Roles</h5>
-            <p>{roles}</p>
-            <h5>Timeline</h5>
-            <p>{timeline}</p>
+            <h5 className={styles.overview_label}>Overview</h5>
+            <p className={styles.overview_p}>{overview}</p>
+            <h5 className={styles.overview_label}>Challenges</h5>
+            <p className={styles.overview_p}>{challenges}</p>
+            <h5 className={styles.overview_label}>Roles</h5>
+            <p className={styles.overview_p}>{roles}</p>
+            <h5 className={styles.overview_label}>Timeline</h5>
+            <p className={styles.overview_p}>{timeline}</p>
           </div>
 
-          <img src={ui_gif.source_url}></img>
+          <img src={ui_gif.source_url} className={styles.overview_img}></img>
         </div>
       </div>
     )

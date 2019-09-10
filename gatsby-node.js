@@ -45,6 +45,10 @@ exports.createPages = async ({ graphql, actions }) => {
             blocks {
               blockName
               innerHTML
+              attrs {
+                process_name
+                process_icon
+              }
             }
           }
         }
