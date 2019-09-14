@@ -1,6 +1,9 @@
+// import createIcon from "templates/IconSvg"
+
 const path = require(`path`)
 const slash = require(`slash`)
 
+exp
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -53,6 +56,20 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allWordpressWpMedia(filter: { localFile: { extension: { eq: "svg" } } }) {
+        edges {
+          node {
+            title
+            alt_text
+            acf {
+              stroke_one
+              stroke_two
+              stroke_three
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -62,7 +79,11 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const { allWordpressPage, allWordpressWpProject } = result.data
+  const {
+    allWordpressPage,
+    allWordpressWpProject,
+    allWordpressWpMedia,
+  } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.js`)

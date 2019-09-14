@@ -1,0 +1,64 @@
+@import "./colors.scss";
+
+:root {
+   --icon-xs: 16px;
+   --icon-sm: 24px;
+   --icon-md: 32px;
+   --icon-lg: 48px;
+   --icon-xl: 64px;
+}
+
+.icon {
+   display: block;
+   color: var(--gray-6);
+   height: 1em;
+   width: 1em;
+   line-height: 1;
+
+   //FOR TESTING
+   // border: 1px solid black;
+}
+
+@mixin iconWrapper {
+   display: inline-block;
+}
+
+// ICON SIZES
+.icon__xs {
+   @include iconWrapper;
+   font-size: var(--icon-xs);
+}
+
+.icon__sm {
+   @include iconWrapper;
+   font-size: var(--icon-sm);
+}
+
+.icon__md {
+   @include iconWrapper;
+   font-size: var(--icon-md);
+}
+
+.icon__lg {
+   @include iconWrapper;
+   font-size: var(--icon-lg);
+}
+
+.icon__xl {
+   @include iconWrapper;
+   font-size: var(--icon-xl);
+   width: auto;
+}
+
+.icon_stroke_one {
+   fill: var(--gray-6);
+}
+
+.icon_stroke_two {
+   fill: var(--color-primary-light);
+   visibility: hidden;
+}
+
+.icon_stroke_three {
+   fill: var(--color-primary);
+}

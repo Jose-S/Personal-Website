@@ -5,6 +5,7 @@ HOW IT WORKS: All pages have a layout componnet wrapper. THe layout componnet
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 @import url('https://rsms.me/inter/inter.css');
 @import "./spacing.scss";
+@import "./colors.scss";
 
 :root {
 
@@ -148,8 +149,13 @@ small {
 p,
 .text--nm-body-one {
   line-height: var(--body-line-height);
+  color: var(--color-text);
 }
 
 footer {
   margin: 32px 0px;
+}
+
+strong {
+  color: var(--color-primary);
 }

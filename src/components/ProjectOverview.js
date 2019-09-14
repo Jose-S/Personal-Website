@@ -17,7 +17,10 @@ class ProjectOverview extends Component {
     console.log("UI GIF", ui_gif)
     return (
       <div>
-        <h1 className={styles.overview_title}>{`${title}.`}</h1>
+        <h1 className={styles.overview_title}>
+          {title}
+          <span className={styles.overview_title_period}>.</span>
+        </h1>
         <h3 className={styles.overview_subtitle}>{subtitle}</h3>
 
         <div className={styles.split_container}>
