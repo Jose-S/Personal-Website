@@ -1,0 +1,9 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+.wrapper {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+}

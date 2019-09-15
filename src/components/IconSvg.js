@@ -1,6 +1,7 @@
 import React from "react"
 import ReactSVG from "react-svg"
 import styles from "../styles/Global/icon.module.scss"
+import IconPlaceholder from "../images/IconPlaceholder.svg"
 
 var icons = {}
 console.log("ICONS", icons)
@@ -10,19 +11,24 @@ console.log("ICONS", icons)
 // className: Style Class
 const Icon = ({ src, size = "" }) => {
   const { title, url } = src
-
+  console.log("ICON URL", url)
   // Create an SVG React Component
   return (
     <ReactSVG
       title={title}
       src={url}
-      fallback={() => <span>Error!</span>}
+      fallback={() => (
+        <img
+          src={IconPlaceholder}
+          className={styles.icon}
+          alt="Placeholder Icon"
+        />
+      )}
       loading={() => <span>Loading</span>}
       afterInjection={postLoad}
       beforeInjection={preLoad}
       className={getSize(size)}
       wrapper="span"
-      
     />
   )
 }
@@ -55,7 +61,8 @@ function resetClass(element, newClass = "") {
 function postLoad(error, svg) {
   // Handle Errors
   if (error) {
-    console.error(error)
+    // Removed FOr Testing
+    // console.error(error)
     return
   }
   // Add classes to svg paths
@@ -68,6 +75,7 @@ function postLoad(error, svg) {
 
 // Pre Load
 function preLoad(svg) {
+  console.log("IM BEOFRE", svg)
   svg.classList.add(styles.icon)
   // Make sure svg is set to
   svg.setAttribute(`width`, `1em`)

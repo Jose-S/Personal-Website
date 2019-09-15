@@ -3,7 +3,6 @@
 const path = require(`path`)
 const slash = require(`slash`)
 
-exp
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -51,6 +50,9 @@ exports.createPages = async ({ graphql, actions }) => {
               attrs {
                 process_name
                 process_icon
+                title
+                content
+                info_icon
               }
             }
           }

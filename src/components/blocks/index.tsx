@@ -6,6 +6,7 @@ const RotatingTextAnimation = loadable(() =>
 )
 const InlineText = loadable(() => import("./inlineText"))
 const ProcessHeader = loadable(() => import("./process-header"))
+const IconBulletContent = loadable(() => import("./icon-bullet-content"))
 
 export default function GetCustomBlock(name: string) {
   switch (name) {
@@ -15,6 +16,8 @@ export default function GetCustomBlock(name: string) {
       return InlineText
     case "lazyblock/process-header":
       return ProcessHeader
+    case "lazyblock/icon-bullet-content":
+      return IconBulletContent
     default:
       return null
   }

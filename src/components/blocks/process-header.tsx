@@ -1,9 +1,7 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import { StaticQuery, graphql, useStaticQuery } from "gatsby"
 import Icon from "../IconSvg"
-import ReactSVG from "react-svg"
-import { render } from "react-dom"
+import styles from "../../styles/process-header.module.scss"
 
 const ProcessHeader: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
@@ -16,17 +14,18 @@ const ProcessHeader: React.FC<IWPGBlock> = props => {
   }
   console.log("IMAGE", process_icon)
   const img = JSON.parse(decodeURI(process_icon))
-  const title = img.title
 
   //   const svg = getIcon(title)
   //   const sv2 = getIcon(title)
   console.log("IMAGE", img)
 
   return (
-    <div className={"wpg-block"}>
-      <h4>{process_name}</h4>
-      <Icon src={img} size="64px"></Icon>
-      <hr />
+    <div className={`wpg-block ${styles.wrapper}`}>
+      <div className={styles.outer_circle}>
+        <Icon src={img} size="32px"></Icon>
+      </div>
+
+      <h6 className={styles.header_title}>{process_name}</h6>
     </div>
   )
 }

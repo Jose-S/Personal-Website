@@ -1,0 +1,10 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+.content_container {
+   margin: 0 auto;
+   max-width: 680px;
+   padding: 0px 1.0875rem 1.45rem;
+   padding-top: 0;
+}

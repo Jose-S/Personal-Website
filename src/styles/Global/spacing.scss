@@ -11,7 +11,7 @@
    --space-xl: calc(3 * var(--space-unit)); //48 px
    --space-xxl: calc(4 * var(--space-unit)); //64px
    --space-xxxl: calc(4.5 * var(--space-unit)); //72px
-   --space-xxxl: calc(6 * var(--space-unit)); //96px
+   --space-xxxxl: calc(6 * var(--space-unit)); //96px
 
    /* components padding */
    --component-padding: var(--space-unit);
@@ -55,6 +55,9 @@
    margin-top: var(--space-xxl);
 }
 
+@mixin margin-top--xxxl {
+   margin-top: var(--space-xxxl);
+}
 
 @mixin margin-bottom {
    margin-bottom: var(--space-unit);

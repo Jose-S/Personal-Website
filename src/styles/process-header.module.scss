@@ -1,0 +1,31 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+.outer_circle {
+   $bg-color: #9DD3FF;
+   border-radius: 50%;
+   width: var(--space-xl);
+   height: var(--space-xl);
+   background: rgba($bg-color, .2);
+   // Center Sub items
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.wrapper {
+   @include margin-top--xxxl;
+   @include margin-bottom--lg;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+}
+
+.header_title {
+   color: var(--gray-4);
+   text-transform: uppercase;
+   margin: 0px;
+   padding: auto;
+   margin-left: var(--space-unit);
+}
