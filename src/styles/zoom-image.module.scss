@@ -1,0 +1,74 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+
+$width: calc(var(--space-xxxxl) * 3.25);
+// $height: 40%;
+
+.placeholder {
+   width: $width;
+   // height: $height;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-color: lightgrey;
+}
+
+.placeholder_full {
+   @extend .placeholder;
+   width: 100%;
+   height: auto;
+}
+
+.displayImage {
+   width: $width;
+   // height: $height;
+}
+
+.displayImage_full {
+   @extend .displayImage;
+   width: 100%;
+   height: auto;
+}
+
+.caption {
+   // width: $width;
+   @include margin-top;
+   word-wrap: break-word;
+}
+
+.zoom_image_wrapper {
+   width: $width;
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+}
+
+.grid_two_one {
+   @include margin-top--lg;
+   @include margin-bottom--lg;
+   @include grid(var(--space-lg), var(--space-lg));
+   @include gridAuto($width);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.grid_two_two {
+   @include margin-top--lg;
+   @include margin-bottom--lg;
+   @include grid(var(--space-lg), var(--space-lg));
+   @include gridAuto($width);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.grid_two_three {
+   @include margin-top--lg;
+   @include margin-bottom--lg;
+   @include grid(var(--space-lg), var(--space-lg));
+   @include gridAuto($width);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}

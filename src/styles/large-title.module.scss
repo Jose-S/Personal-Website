@@ -1,0 +1,31 @@
+@import "./Global/colors.scss";
+
+.largeWorkTitle {
+   display: inline-block;
+   text-align: center;
+   letter-spacing: 0.25px;
+   font-weight: 500;
+   width: 75%;
+   color: var(--black)
+}
+
+.center {
+   text-align: center;
+}
+
+.first_text {
+   color: var(--color-primary);
+}
+
+.second_text {
+   color: var(--color-secondary);
+}
+
+.third_text {
+   color: var(--color-primary-light);
+}
+
+.container {
+   display: flex;
+   flex-direction: row-reverse;
+}

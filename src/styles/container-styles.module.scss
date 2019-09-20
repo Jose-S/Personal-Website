@@ -1,0 +1,24 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+.grid_container {
+   @include grid(var(--space-lg), var(--space-md));
+   @include gridAuto(240px);
+}
+
+.row_container {
+   display: flex;
+   flex-direction: row;
+}
+
+.col_container {
+   display: flex;
+   flex-direction: column;
+}
+
+
+.wrapper {
+   @include margin-top--lg;
+   @include margin-bottom--md;
+}

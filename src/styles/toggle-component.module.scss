@@ -1,0 +1,25 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+
+.container_wrapper {
+   @include margin-bottom--lg;
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+}
+
+.title_wrapper {
+   display: flex;
+   align-items: flex-end;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.toggle_wrapper {
+   margin: calc(var(--space-unit)* 1.25)
+}
+
+
+.title {
+   @include margin-top--xs;
+}
