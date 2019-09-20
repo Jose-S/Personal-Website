@@ -50,9 +50,13 @@ exports.createPages = async ({ graphql, actions }) => {
               attrs {
                 process_name
                 process_icon
+                grid_style
                 title
-                content
-                info_icon
+                loading_image
+                display_image
+                loading_image_secondary
+                display_image_secondary
+                controler
               }
             }
           }

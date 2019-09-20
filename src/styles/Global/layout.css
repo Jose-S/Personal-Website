@@ -99,16 +99,18 @@ h4,
   font-size: var(--text-lg);
   font-weight: 500;
   line-height: 160%;
-  margin-bottom: var(--space-xs);
-  margin-top: var(--space-md);
+  margin-bottom: var(--space-unit);
+  margin-top: var(--space-lg);
 }
 
-li,
+
 h5,
 .text--md {
   font-size: var(--text-md);
   font-weight: 600;
   line-height: 167%;
+  margin: 0px;
+  margin-bottom: var(--space-xs);
 }
 
 h6,
@@ -121,7 +123,7 @@ h6,
 .text--sm-subtitle-one,
 small {
   font-size: var(--text-sm);
-  line-height: 150%;
+  line-height: 160%;
 }
 
 .text--xs-subtitle-two {
@@ -131,7 +133,7 @@ small {
 }
 
 .text--xs-body-two {
-  font-size: var(--text-xs);
+  font-size: var(--text-sm);
   line-height: 150%;
 }
 
@@ -179,6 +181,7 @@ hr {
 }
 
 li {
+  font-size: var(--text-md);
   line-height: 200%;
   font-weight: 500;
 }

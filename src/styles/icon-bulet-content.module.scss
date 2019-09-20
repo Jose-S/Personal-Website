@@ -2,8 +2,35 @@
 @import "./Global/spacing.scss";
 @import "./Global/colors.scss";
 
+
+.wrapper_col {
+   @include margin-top--sm;
+   @include margin-bottom--md;
+}
+
 .wrapper {
    display: flex;
-   align-items: center;
+   align-items: flex-start;
    justify-content: flex-start;
+}
+
+.wrapper_icon {
+   align-self: flex-start;
+   margin-right: var(--space-xl);
+}
+
+.wrapper_icon_grid {
+   align-self: flex-start;
+   margin-right: var(--space-unit);
+}
+
+.cover {
+   width: 300px;
+   position: absolute;
+   height: 300px;
+}
+
+.grid {
+   @include grid;
+   @include gridAuto(260px);
 }

@@ -21,6 +21,7 @@ const InlineText: React.FC<IWPGBlock> = props => {
       </span>
     )
   }
+
   return <span>{inline_text}</span>
 }
 
