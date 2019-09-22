@@ -15,13 +15,14 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
     display_image: string
   }
 
+  console.log("HAS IT CRASHED")
   const imgLoading =
-    props.blockName === "lazyblock/zoom-image-grid"
+    props.blockName !== "lazyblock/zoom-image"
       ? loading_image
       : JSON.parse(decodeURI(loading_image))
-
+  console.log("HAS IT CRASHED", imgLoading)
   const imgDisplay =
-    props.blockName === "lazyblock/zoom-image-grid"
+    props.blockName !== "lazyblock/zoom-image"
       ? display_image
       : JSON.parse(decodeURI(display_image))
 

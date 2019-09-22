@@ -63,7 +63,7 @@ const IndexPage = () => (
       )}
     />
     <ProjectItems />
-    <Carousel showThumbs={true} className={styles.container}>
+    <Carousel showThumbs={true}>
       <div>
         <img src="http://lorempixel.com/output/cats-q-c-640-480-1.jpg" />
         <p className="legend">Legend 1</p>

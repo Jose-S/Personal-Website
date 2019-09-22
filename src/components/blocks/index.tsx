@@ -15,6 +15,7 @@ const HeadingBulletContainer = loadable(() =>
   import("./headingBulletContainer")
 )
 const ToggleImage = loadable(() => import("./toggleImage"))
+const ImageCarousal = loadable(() => import("./imageCarousal"))
 
 export default function GetCustomBlock(name: string) {
   switch (name) {
@@ -38,6 +39,8 @@ export default function GetCustomBlock(name: string) {
       return HeadingBulletContainer
     case "lazyblock/toggle-image":
       return ToggleImage
+    case "lazyblock/toggle-image-carousel":
+      return ImageCarousal
     default:
       return null
   }

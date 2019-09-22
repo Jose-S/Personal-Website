@@ -21,6 +21,7 @@ $width: calc(var(--space-xxxxl) * 3.25);
 
 .displayImage {
    width: $width;
+   pointer-events: all;
    // height: $height;
 }
 

@@ -6,8 +6,8 @@ import "react-lazy-load-image-component/src/effects/blur.css"
 const LazyZoomImage = ({
   src,
   placeholderSrc,
-  srcClassName,
-  placeholderClassName,
+  srcClassName = "",
+  placeholderClassName = "",
 }) => {
   // Create a Placeholder Div
   var ph = () => {
