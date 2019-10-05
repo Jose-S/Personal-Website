@@ -7,18 +7,24 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
   // The Controller contains a URI with data
-  const { grid_style, controler } = attrs as {
+  const { grid_style, controler, is_toggle = false } = attrs as {
     grid_style: string
     controler: string
+    is_toggle: boolean
   }
 
+  console.log("Create Image ZOOM GRID", grid_style)
   // Decode UR Data to an array of objects
   const zoomImages = JSON.parse(decodeURI(controler))
 
   // Returns an array containing IconBulletContent elements
   var createZoomImages = () => {
     let col = []
-    zoomImages.forEach((zoomImg, index) =>
+    zoomImages.forEach((zoomImg, index) => {
+      if (is_toggle) {
+        zoomImg.display_image = zoomImg.toggle_image
+      }
+
       col.push(
         <ZoomImage
           innerHTML={props.innerHTML}
@@ -28,13 +34,13 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
           key={index}
         />
       )
-    )
+    })
 
     return col
   }
 
   return (
-    <div className={`wpg-block, ${styles[grid_style]}`}>
+    <div className={`wpg-block ${styles[grid_style]}`}>
       {createZoomImages()}
     </div>
   )

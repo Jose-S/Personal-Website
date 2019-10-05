@@ -9,9 +9,8 @@ import { WPGBlock } from "react-gutenberg"
 import GetCustomBlock from "../components/blocks"
 import styles from "../styles/large-title.module.scss"
 import ProjectItems from "../components/ProjectItems"
-import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.css"
-// import "../styles/Global/carousel.css"
+
 
 const IndexPage = () => (
   <Layout>
@@ -63,20 +62,6 @@ const IndexPage = () => (
       )}
     />
     <ProjectItems />
-    <Carousel showThumbs={true}>
-      <div>
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-1.jpg" />
-        <p className="legend">Legend 1</p>
-      </div>
-      <div>
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-2.jpg" />
-        <p className="legend">Legend 2</p>
-      </div>
-      <div>
-        <img src="http://lorempixel.com/output/cats-q-c-640-480-3.jpg" />
-        <p className="legend">Legend 3</p>
-      </div>
-    </Carousel>
   </Layout>
 )
 

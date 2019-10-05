@@ -34,7 +34,7 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
       <LazyZoomImage
         src={imgDisplay.url}
         placeholderSrc={imgLoading.url}
-        srcClassName={styles.displayImage}
+        srcClassName={styles.displayImage_full}
         placeholderClassName={styles.placeholder}
       ></LazyZoomImage>
       <small className={styles.caption}>{caption}</small>

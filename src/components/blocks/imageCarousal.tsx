@@ -5,8 +5,6 @@ import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.css"
 import styles from "../../styles/carousel.module.scss"
 import ImageZoom from "react-medium-image-zoom/lib/ImageZoom"
-import ZoomImage from "./zoomImage"
-import LazyZoomImage from "../LazyZoomImage"
 
 const ImageCarousal: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
@@ -24,7 +22,13 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
     on_change: Function
   }
 
-  const imgList = JSON.parse(decodeURI(controler))
+  console.log("FUNC", on_change)
+
+  const imgList =
+    props.blockName !== "lazyblock/image-carousel"
+      ? controler
+      : JSON.parse(decodeURI(controler)).map(img => img.display_image)
+
   console.log("ImageCarousal", imgList)
   // Returns a typed component from react-typed component made by
   // ssbeefeater (https://www.npmjs.com/package/react-typed)
@@ -35,8 +39,9 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
       col.push(
         //   <img src={img.display_image.url}></img>
         <ImageZoom
+          key={index}
           image={{
-            src: img.display_image.url,
+            src: img.url,
           }}
         />
       )
@@ -50,7 +55,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
       showThumbs={true}
       showStatus={false}
       className={styles.wrapper_container}
-      onChange={on_change()}
+      onChange={current => on_change(current)}
       selectedItem={selected_item}
     >
       {createZoomImages()}

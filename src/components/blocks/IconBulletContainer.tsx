@@ -36,7 +36,7 @@ const IconBulletContainer: React.FC<IWPGBlock> = props => {
   }
 
   return (
-    <div className={`wpg-block, ${styles.wrapper}`}>
+    <div className={`wpg-block ${styles.wrapper}`}>
       <div className={`${styles[grid_style]}`}>{createIconBullets()}</div>
     </div>
   )

@@ -4,6 +4,8 @@ import "../styles/global/toggle-react.scss"
 import styles from "../styles/toggle-component.module.scss"
 import Tippy from "@tippy.js/react"
 import "tippy.js/themes/google.css"
+import { LazyLoadComponent } from "react-lazy-load-image-component"
+import ContentLoader from "react-content-loader"
 
 class ToggleableComponent extends Component {
   static defaultProperties = {
@@ -29,6 +31,23 @@ class ToggleableComponent extends Component {
       hideTitle,
       sizeClass,
     } = this.props
+
+    const MyLoader = () => (
+      <ContentLoader
+        height={475}
+        width={500}
+        speed={2}
+        primaryColor="#f3f3f3"
+        secondaryColor="#ecebeb"
+      >
+        <rect x="88" y="14" rx="5" ry="5" width="400" height="400" />
+        <rect x="8" y="12" rx="0" ry="0" width="64" height="64" />
+        <rect x="8" y="112" rx="0" ry="0" width="64" height="64" />
+        <rect x="8" y="212" rx="0" ry="0" width="64" height="64" />
+      </ContentLoader>
+    )
+
+    console.log("MAIN", mainComponent)
 
     return (
       <div className={styles.container_wrapper}>
@@ -66,8 +85,27 @@ class ToggleableComponent extends Component {
           className={sizeClass}
           ref={input => (this.divElement = input)}
         >
-          {!this.state.toggle && mainComponent}
-          {this.state.toggle && toggledComponent}
+          <div className={styles.components_wrapper}>
+            {/* <LazyLoadComponent placeholder={<MyLoader />}> */}
+            <div
+              className={`${styles.main_component_wrapper} ${
+                !this.state.toggle ? styles.fadeIn : styles.fadeOut
+              }`}
+            >
+              {mainComponent}
+            </div>
+            {/* </LazyLoadComponent> */}
+            {/* {!this.state.toggle && mainComponent} */}
+            {/* <LazyLoadComponent placeholder={<MyLoader />}> */}
+            <div
+              className={`${styles.toggle_component_wrapper} ${
+                this.state.toggle ? styles.fadeIn : styles.fadeOut
+              }`}
+            >
+              {toggledComponent}
+            </div>
+            {/* </LazyLoadComponent> */}
+          </div>
         </div>
       </div>
     )

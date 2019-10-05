@@ -1,14 +1,17 @@
-import React from "react"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
+import React, { useState } from "react"
 import ImageZoom from "react-medium-image-zoom"
-import "react-lazy-load-image-component/src/effects/blur.css"
-
+import LazyLoad from "react-lazy-load"
+import LoadingImage from "./LoadingImage"
+// import styles from "../styles/zoom-image.module.scss"
+import styles from "../styles/image-dialog.module.scss"
 const LazyZoomImage = ({
   src,
   placeholderSrc,
   srcClassName = "",
   placeholderClassName = "",
 }) => {
+  const [isLoading, setIsLoading] = useState(true)
+
   // Create a Placeholder Div
   var ph = () => {
     return (
@@ -21,16 +24,51 @@ const LazyZoomImage = ({
     )
   }
 
+  // Don't want to create a new file for just one style
+
   // Lazy loads an image zoom component
   return (
-    <LazyLoadComponent placeholder={ph()}>
-      <ImageZoom
-        image={{
-          src: src,
-          className: srcClassName,
-        }}
-      />
-    </LazyLoadComponent>
+    <div className={styles.images_wrapper}>
+      <LoadingImage
+        src={placeholderSrc}
+        srcClassName={isLoading ? styles.fadeIn : styles.fadeOut}
+        positionClass={styles.inner_loading_image}
+      ></LoadingImage>
+
+      <LazyLoad
+        offsetVertical={500}
+        width="100%"
+        onContentVisible={() => setIsLoading(false)}
+        className={styles.image_stacker__bottom}
+      >
+        <ImageZoom
+          image={{
+            src: src,
+            className: styles.image_wrapper,
+          }}
+        />
+      </LazyLoad>
+    </div>
+    // <div style={{ display: "grid" }}>
+    //   <LoadingImage
+    //     src={placeholderSrc}
+    //     srcClassName={isLoading ? styles.fadeIn : styles.fadeOut}
+    //     positionClass={styles.image_stacker__top}
+    //   ></LoadingImage>
+    //   <LazyLoad
+    //     offsetVertical={500}
+    //     height="100%"
+    //     onContentVisible={() => setIsLoading(false)}
+    //     className={styles.image_stacker__bottom}
+    //   >
+    //     <ImageZoom
+    //       image={{
+    //         src: src,
+    //         className: srcClassName,
+    //       }}
+    //     />
+    //   </LazyLoad>
+    // </div>
   )
 }
 

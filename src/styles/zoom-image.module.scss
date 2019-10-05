@@ -21,12 +21,10 @@ $width: calc(var(--space-xxxxl) * 3.25);
 
 .displayImage {
    width: $width;
-   pointer-events: all;
    // height: $height;
 }
 
 .displayImage_full {
-   @extend .displayImage;
    width: 100%;
    height: auto;
 }
@@ -38,14 +36,34 @@ $width: calc(var(--space-xxxxl) * 3.25);
 }
 
 .zoom_image_wrapper {
-   width: $width;
-   display: flex;
-   justify-content: flex-start;
-   flex-direction: column;
+   width: 100%;
+   // display: flex;
+   // justify-content: flex-start;
+   // flex-direction: column;
+}
+
+.image_stacker {
+
+   &__bottom {
+      grid-row: 1;
+      grid-column: 1;
+      z-index: 1;
+   }
+
+   &__top {
+      grid-row: 1;
+      grid-column: 1;
+      z-index: 2;
+      pointer-events: none;
+   }
+}
+
+.grid_top_margin {
+   @include margin-top--lg;
 }
 
 .grid_two_one {
-   @include margin-top--lg;
+
    @include margin-bottom--lg;
    @include grid(var(--space-lg), var(--space-lg));
    @include gridAuto($width);
@@ -55,7 +73,7 @@ $width: calc(var(--space-xxxxl) * 3.25);
 }
 
 .grid_two_two {
-   @include margin-top--lg;
+
    @include margin-bottom--lg;
    @include grid(var(--space-lg), var(--space-lg));
    @include gridAuto($width);
@@ -65,11 +83,31 @@ $width: calc(var(--space-xxxxl) * 3.25);
 }
 
 .grid_two_three {
-   @include margin-top--lg;
+
    @include margin-bottom--lg;
    @include grid(var(--space-lg), var(--space-lg));
    @include gridAuto($width);
    display: flex;
    justify-content: space-between;
    align-items: center;
+}
+
+.fadeOut {
+   grid-row: 1;
+   grid-column: 1;
+   z-index: 2;
+   pointer-events: none;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.fadeIn {
+   grid-row: 1;
+   grid-column: 1;
+   z-index: 2;
+   pointer-events: none;
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 300ms;
 }
