@@ -1,0 +1,159 @@
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+.image_wrapper {
+   width: 100%;
+   height: auto;
+   cursor: pointer;
+}
+
+.image_loader {
+   width: 100%;
+   height: 100%;
+   filter: blur(20px);
+}
+
+.inner_modal_image_wrapper {
+   @extend .image_wrapper;
+   cursor: default;
+}
+
+.no_scroll {
+   overflow: hidden;
+}
+
+.modal_image_wrapper {
+   @include margin-bottom;
+   max-width: 80%;
+   align-self: center;
+}
+
+.modal_wrapper {
+
+   width: 55%;
+   position: relative;
+   padding: var(--space-md);
+   background: var(--gray-1);
+   background-clip: padding-box;
+   box-shadow: 0 0 4px rgba(0, 0, 0, .14),
+      0 4px 8px rgba(0, 0, 0, .28);
+   border-radius: var(--space-xxs);
+   color: var(--color-text);
+
+   // OVERIDEN when centered
+   margin: auto;
+}
+
+.modal_content_wrapper {
+   display: flex;
+   justify-content: flex-start;
+   flex-direction: column;
+}
+
+.modal_title {
+   @include margin-top;
+}
+
+.caption {
+   // width: $width;
+   @include margin-top;
+   word-wrap: break-word;
+}
+
+.transitionEnter {
+   // transform: scale(0);
+   opacity: 0;
+}
+
+.transitionEnterActive {
+   opacity: 1.0;
+   transition: opacity 500ms ease;
+}
+
+.transitionExit {
+   opacity: 1.0;
+}
+
+.transitionExitActive {
+   opacity: 0;
+   transition: opacity 500ms ease;
+}
+
+.image_stacker {
+
+   &__bottom {
+      // grid-row: 1;
+      // grid-column: 1;
+      z-index: 1;
+      position: absolute;
+      top: 0;
+   }
+
+   &__top {
+      // grid-row: 1;
+      // grid-column: 1;
+      z-index: 2;
+      pointer-events: none;
+      position: relative;
+      top: 0;
+   }
+}
+
+.fadeOut {
+   // grid-row: 1;
+   // grid-column: 1;
+   overflow: hidden;
+   position: relative;
+   width: 100%;
+   z-index: 2;
+   pointer-events: none;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 150s linear 300ms, opacity 300ms;
+
+
+}
+
+.fadeIn {
+   // grid-row: 1;
+   // grid-column: 1;
+   overflow: hidden;
+   position: relative;
+   width: 100%;
+   z-index: 2;
+   pointer-events: none;
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.inner_loading_image {
+   width: 100%;
+   filter: blur(10px);
+   // animation: image_blur 20s;
+}
+
+.inner_loading_image_out {
+   width: 100%;
+   // filter: blur(10px);
+   animation: image_blur 20s;
+}
+
+.images_wrapper {
+   @include margin-bottom;
+   position: relative;
+}
+
+@keyframes image_blur {
+   0% {
+      filter: blur(0px)
+   }
+
+   50% {
+      filter: blur(5px)
+   }
+
+   100% {
+      filter: blur(0px)
+   }
+}

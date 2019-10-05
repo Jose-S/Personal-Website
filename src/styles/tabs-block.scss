@@ -1,0 +1,71 @@
+// ORIGINAL CSS CODE FROM react-tabs library
+// https://github.com/reactjs/react-tabs/blob/master/style/react-tabs.scss
+@import "./Global/colors.scss";
+@import "./Global/spacing.scss";
+
+$borderWidth: 4px;
+
+.react-tabs {
+   -webkit-tap-highlight-color: transparent;
+
+   &__tab-list {
+      border-bottom: 2px solid var(--gray-4);
+      margin: 0 0 var(--space-unit);
+      padding: 0;
+   }
+
+   &__tab {
+      display: inline-block;
+      border-bottom: none;
+      bottom: -$borderWidth;
+      position: relative;
+      list-style: none;
+      padding: var(--space-xs) var(--space-unit);
+      cursor: pointer;
+
+      &--selected {
+         background: var(--gray-1);
+
+         border-bottom: $borderWidth solid var(--color-primary);
+         color: black;
+         border-radius: $borderWidth $borderWidth 0px 0px;
+         // Remove mitter corners
+         border-width: 0px 0px $borderWidth 0px;
+         border-color: var(--white) var(--white) var(--color-primary) var(--white);
+      }
+
+      &--disabled {
+         color: GrayText;
+         cursor: default;
+      }
+
+      &:focus {
+         // box-shadow: 0 0 5px hsl(208, 99%, 50%);
+         border-color: transparent;
+         border-bottom: $borderWidth solid var(--color-primary);
+         outline: none;
+      }
+   }
+
+   &__tab-panel {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s linear 300ms,
+         opacity 300ms;
+
+      &--selected {
+         display: block;
+         visibility: visible;
+         opacity: 1;
+         transition: visibility 0s linear 0s,
+            opacity 300ms;
+      }
+   }
+}
+
+.stack_wrapper {
+   position: relative;
+   top: 0;
+   left: 0;
+}
