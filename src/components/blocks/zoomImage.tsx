@@ -26,9 +26,22 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
       ? display_image
       : JSON.parse(decodeURI(display_image))
 
+  console.log("CAPTION IS", caption)
   // Returns a typed component from react-typed component made by
   // ssbeefeater (https://www.npmjs.com/package/react-typed)
 
+  var createCaption = () => {
+    if (caption != null) {
+      return (
+        <small className={styles.caption}>
+          <strong>{imgDisplay.caption}</strong>
+          {caption}
+        </small>
+      )
+    }
+  }
+
+  console.log(display_image)
   return (
     <div className={styles.zoom_image_wrapper}>
       <LazyZoomImage
@@ -37,7 +50,8 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
         srcClassName={styles.displayImage_full}
         placeholderClassName={styles.placeholder}
       ></LazyZoomImage>
-      <small className={styles.caption}>{caption}</small>
+
+      {createCaption()}
     </div>
   )
 }

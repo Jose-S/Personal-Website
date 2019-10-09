@@ -8,3 +8,10 @@
    padding: 0px 1.0875rem 1.45rem;
    padding-top: 0;
 }
+
+.overview_label {
+   @include margin-top--md;
+   @include margin-bottom--xs;
+   text-transform: uppercase;
+   color: var(--color-text-subtitle);
+}

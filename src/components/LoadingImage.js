@@ -16,6 +16,7 @@ const LoadingImage = ({ src, srcClassName = "", positionClass = "" }) => {
           // style={{ width: "100%", filter: "blur(10px)" }}
         />
       </div>
+      // LEFT HERWE IF I DECIDE TO USE AN SVG FILTER INSTEAD
       // <svg
       //   xmlns="http://www.w3.org/2000/svg"
       //   xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -32,7 +33,7 @@ const LoadingImage = ({ src, srcClassName = "", positionClass = "" }) => {
   } else {
     return (
       <ContentLoader
-        height={200}
+        height={155}
         width={300}
         speed={2}
         primaryColor="#f3f3f3"

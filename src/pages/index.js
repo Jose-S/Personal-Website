@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, StaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -10,7 +10,6 @@ import GetCustomBlock from "../components/blocks"
 import styles from "../styles/large-title.module.scss"
 import ProjectItems from "../components/ProjectItems"
 import "react-responsive-carousel/lib/styles/carousel.css"
-
 
 const IndexPage = () => (
   <Layout>

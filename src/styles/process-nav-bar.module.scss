@@ -1,0 +1,46 @@
+@import "./Global/grid_layouts.scss";
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+
+.nav_item_icon {
+   width: var(--space-xxl);
+}
+
+.nav_item_label {
+   margin: 0px;
+}
+
+.nav_item_wrapper {
+   // display: flex;
+   // flex-direction: column;
+   text-align: center;
+   padding: calc(var(--space-sm) - 2);
+   cursor: pointer;
+
+   flex: 1 1 0px;
+
+
+   &:hover {
+      background-color: var(--gray-1);
+      border-radius: var(--space-xs);
+   }
+}
+
+
+.nav_item_bar_wrapper {
+   display: flex;
+   flex-direction: row;
+   background-color: red;
+   width: 100% // justify-content: space-between;
+}
+
+.nav_animate {
+   display: flex;
+   flex-direction: column;
+   background-color: red;
+   width: 50%;
+   right: 0;
+   position: sticky;
+   // justify-content: space-between;
+}

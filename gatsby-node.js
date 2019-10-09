@@ -43,6 +43,13 @@ exports.createPages = async ({ graphql, actions }) => {
               ui_gif {
                 source_url
               }
+              process {
+                name
+                image {
+                  source_url
+                  alt_text
+                }
+              }
             }
             blocks {
               blockName

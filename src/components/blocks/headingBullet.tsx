@@ -1,5 +1,6 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
+import styles from "../../styles/heading-bullet.module.scss"
 
 const HeadingBullet: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes

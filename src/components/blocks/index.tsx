@@ -22,6 +22,7 @@ const ImageDialogGrid = loadable(() => import("./imageDialogGrid"))
 const ToggleImageGrid = loadable(() => import("./toggleImageGrid"))
 const Tabs = loadable(() => import("./tabBlock"))
 const VimeoVideo = loadable(() => import("./vimeoVideo"))
+const VideoGrid = loadable(() => import("./videoGrid"))
 
 export default function GetCustomBlock(name: string) {
   switch (name) {
@@ -59,6 +60,8 @@ export default function GetCustomBlock(name: string) {
       return Tabs
     case "lazyblock/video":
       return VimeoVideo
+    case "lazyblock/video-grid":
+      return VideoGrid
     default:
       return null
   }

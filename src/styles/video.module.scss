@@ -7,8 +7,75 @@
    /* 720 / 1280 = 0.5625 */
 }
 
+.hover_player_wrapper {
+   position: relative;
+   display: inline-block;
+   width: 100%;
+}
+
+.hover_video_pointer_area {
+   position: absolute;
+   width: 100%;
+   top: 0;
+   height: 100%;
+   cursor: pointer;
+}
+
 .react_player {
    position: absolute;
    top: 0;
    left: 0;
+}
+
+.hover_react_player {
+   @extend .react_player;
+   position: relative;
+}
+
+.image_stacker {
+
+   &__bottom {
+      // grid-row: 1;
+      // grid-column: 1;
+      z-index: 1;
+      position: relative;
+      top: 0;
+   }
+
+   &__top {
+      // grid-row: 1;
+      // grid-column: 1;
+      z-index: 2;
+      pointer-events: none;
+      position: relative;
+      top: 0;
+   }
+}
+
+.fadeOut {
+   // grid-row: 1;
+   // grid-column: 1;
+   overflow: hidden;
+   position: absolute;
+   width: 100%;
+   z-index: 2;
+   pointer-events: none;
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 150s linear 300ms, opacity 300ms;
+
+
+}
+
+.fadeIn {
+   // grid-row: 1;
+   // grid-column: 1;
+   overflow: hidden;
+   position: absolute;
+   width: 100%;
+   z-index: 2;
+   pointer-events: none;
+   visibility: visible;
+   opacity: 1;
+   transition: visibility 0s linear 0s, opacity 300ms;
 }
