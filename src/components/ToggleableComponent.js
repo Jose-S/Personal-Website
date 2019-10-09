@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import Toggle from "react-toggle"
-import "../styles/global/toggle-react.scss"
+import "../styles/Global/toggle-react.scss"
 import styles from "../styles/toggle-component.module.scss"
 import Tippy from "@tippy.js/react"
 import "tippy.js/themes/google.css"
-import { LazyLoadComponent } from "react-lazy-load-image-component"
 import ContentLoader from "react-content-loader"
 
 class ToggleableComponent extends Component {
