@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import ProcessNavItem from "./ProcessNavItem"
 import styles from "../styles/process-nav-bar.module.scss"
-import { Flipper, Flipped } from "react-flip-toolkit"
 
 // Image not hoverable since it is under text
 // This bug was fixed by adding hover state variable to the componnet
@@ -31,21 +30,9 @@ class ProcessNavBar extends Component {
     const processItems = this.props.props
     return (
       <>
-        <Flipper flipKey={this.state.animate} spring={"gentle"}>
-          {this.state.animate ? (
-            <Flipped flipId="navbar">
-              <div className={styles.nav_animate}>
-                {this.createNavItems(processItems)}
-              </div>
-            </Flipped>
-          ) : (
-            <Flipped flipId="navbar">
-              <div className={styles.nav_item_bar_wrapper}>
-                {this.createNavItems(processItems)}
-              </div>
-            </Flipped>
-          )}
-        </Flipper>
+        <div className={styles.nav_item_bar_wrapper}>
+          {this.createNavItems(processItems)}
+        </div>
         <button onClick={this.toggleAnimate}>Click Me</button>
       </>
     )
