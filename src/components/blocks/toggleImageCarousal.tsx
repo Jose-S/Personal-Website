@@ -1,13 +1,8 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
 import "react-lazy-load-image-component/src/effects/blur.css"
-import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.css"
-import styles from "../../styles/carousel.module.scss"
-import ImageZoom from "react-medium-image-zoom/lib/ImageZoom"
-import ImageCarousal from "./imageCarousal"
 import DynamicToggleCarousel from "../DynamicToggleCarousel"
-
 const ToggleImageCarousal: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
