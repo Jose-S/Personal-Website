@@ -22,6 +22,8 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
   }
 
   console.log("FUNC", on_change)
+  console.log("FUNC IMG CAROUSEL", controler)
+  console.log("FUNC IMG CAROUSEL DECODE", decodeURI(controler))
 
   const imgList =
     props.blockName !== "lazyblock/image-carousel"
