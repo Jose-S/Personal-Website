@@ -9,7 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 
-import "../styles/Global/layout.css"
+import "../styles/Global/layout.scss"
 import MainMenu from "./MainMenu"
 
 const Layout = ({ children }) => {

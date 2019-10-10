@@ -1,6 +1,6 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import styles from "../styles/header.module.css"
+import styles from "../styles/header.module.scss"
 
 const SiteInfo = () => (
   <StaticQuery

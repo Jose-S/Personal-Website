@@ -2,7 +2,7 @@ import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 // import styled from "styled-components"
 import SiteInfo from "./SiteInfo"
-import styles from "../styles/header.module.css"
+import styles from "../styles/header.module.scss"
 
 // const MainMenuWrapper = styled.div`
 //   display: flex;
