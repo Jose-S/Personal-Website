@@ -3,7 +3,7 @@ import Toggle from "react-toggle"
 import "../styles/Global/toggle-react.scss"
 import styles from "../styles/toggle-component.module.scss"
 import Tippy from "@tippy.js/react"
-import "tippy.js/themes/google.css"
+// import "tippy.js/themes/google.css"
 
 class ToggleableComponent extends Component {
   static defaultProperties = {

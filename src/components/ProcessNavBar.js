@@ -28,13 +28,15 @@ class ProcessNavBar extends Component {
 
   render() {
     const processItems = this.props.props
-    return (
+    return processItems !== null ? (
       <>
         <div className={styles.nav_item_bar_wrapper}>
           {this.createNavItems(processItems)}
         </div>
         <button onClick={this.toggleAnimate}>Click Me</button>
       </>
+    ) : (
+      <></>
     )
   }
 }
