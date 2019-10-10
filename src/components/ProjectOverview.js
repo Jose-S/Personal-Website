@@ -35,7 +35,11 @@ class ProjectOverview extends Component {
             <p className={styles.overview_p}>{timeline}</p>
           </div>
 
-          <img src={ui_gif.source_url} className={styles.overview_img}></img>
+          <img
+            src={ui_gif.source_url}
+            className={styles.overview_img}
+            alt="Project Overview Media File"
+          ></img>
         </div>
       </div>
     )
