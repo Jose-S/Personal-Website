@@ -132,3 +132,24 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+
+// gatsby-node.js in root folder.
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.jsx?$/,
+          // loader: "stylelint-custom-processor-loader",
+          // exclude: /node_modules/,
+          test: /\.scss$module/,
+          use: [
+            "style-loader",
+            "css-loader",
+            "sass-loader, stylelint-custom-processor-loader",
+          ],
+        },
+      ],
+    },
+  })
+}

@@ -1,4 +1,4 @@
 {
-   "editor.formatOnSave": true,
-   "typescript.tsserver.useSeparateSyntaxServer": false
+  "editor.formatOnSave": true,
+  "typescript.tsserver.useSeparateSyntaxServer": false
 }

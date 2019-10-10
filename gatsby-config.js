@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-typescript`,
+    "gatsby-transformer-typescript-css-modules",
     `react-gutenberg`,
     `gatsby-plugin-react-helmet`,
     {
@@ -35,7 +36,7 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-wordpress",
+      resolve: `gatsby-source-wordpress`,
       options: {
         /*
          * The base URL of the Wordpress site without the trailingslash and the protocol. This is required.

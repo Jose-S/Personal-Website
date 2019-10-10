@@ -69,6 +69,5 @@ yarn-error.log
 .yarn-integrity
 
 # Ignores Any Config Sensative Files
-gatsby-config.js
 .npmrc
 

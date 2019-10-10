@@ -9,6 +9,7 @@
     "@tippy.js/react": "^2.2.3",
     "@types/loadable__component": "^5.10.0",
     "@types/react-toggle": "^4.0.2",
+    "dotenv": "^8.1.0",
     "gatsby": "^2.15.34",
     "gatsby-cli": "^2.7.57",
     "gatsby-image": "^2.2.25",
@@ -22,7 +23,7 @@
     "gatsby-source-filesystem": "^2.1.31",
     "gatsby-source-wordpress": "^3.1.41",
     "gatsby-transformer-sharp": "^2.2.21",
-    "node-sass": "^4.12.0",
+    "gatsby-transformer-typescript-css-modules": "^1.0.14",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -41,9 +42,12 @@
     "react-toggle": "^4.1.1",
     "react-typed": "^1.2.0",
     "react-visibility-sensor": "^5.1.1",
+    "slash": "^3.0.0",
+    "tippy.js": "^5.0.2",
     "typed.js": "^2.0.11"
   },
   "devDependencies": {
+    "node-sass": "^4.12.0",
     "prettier": "^1.18.2"
   },
   "keywords": [
