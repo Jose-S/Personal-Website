@@ -3,7 +3,7 @@ import styles from "../styles/project-item.module.scss"
 import Tippy from "@tippy.js/react"
 
 // Import the Google theme from tippy.js
-import "tippy.js/themes/google.css"
+// import "tippy.js/themes/google.css"
 import { Link } from "gatsby"
 
 // Image not hoverable since it is under text
