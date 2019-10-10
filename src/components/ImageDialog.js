@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import Modal from "react-responsive-modal"
 // import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from "../styles/image-dialog.module.scss"
-import ContentLoader from "react-content-loader"
 // import LazyLoad from "react-lazyload"
 
 import LazyLoad from "react-lazy-load"

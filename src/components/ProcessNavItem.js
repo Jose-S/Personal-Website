@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, animateScroll as scroll } from "react-scroll"
+import { Link } from "react-scroll"
 import styles from "../styles/process-nav-bar.module.scss"
 
 const ProcessNavItem = ({ name, icon }) => {

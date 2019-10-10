@@ -9,7 +9,7 @@ import ProcessNavBar from "../components/ProcessNavBar"
 export default ({ pageContext }) => <Layout>{setContent(pageContext)}</Layout>
 
 function setContent(pageContext) {
-  if (pageContext.acf.overview != "") {
+  if (pageContext.acf.overview !== "") {
     console.log("PROCESS", pageContext.acf.process)
     return (
       <>

@@ -12,18 +12,6 @@ const LazyZoomImage = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true)
 
-  // Create a Placeholder Div
-  var ph = () => {
-    return (
-      <div
-        style={{
-          backgroundImage: `url(${placeholderSrc})`,
-        }}
-        className={placeholderClassName}
-      ></div>
-    )
-  }
-
   // Don't want to create a new file for just one style
 
   // Lazy loads an image zoom component

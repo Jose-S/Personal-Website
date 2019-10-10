@@ -4,7 +4,6 @@ import "../styles/Global/toggle-react.scss"
 import styles from "../styles/toggle-component.module.scss"
 import Tippy from "@tippy.js/react"
 import "tippy.js/themes/google.css"
-import ContentLoader from "react-content-loader"
 
 class ToggleableComponent extends Component {
   static defaultProperties = {
@@ -30,21 +29,6 @@ class ToggleableComponent extends Component {
       hideTitle,
       sizeClass,
     } = this.props
-
-    const MyLoader = () => (
-      <ContentLoader
-        height={475}
-        width={500}
-        speed={2}
-        primaryColor="#f3f3f3"
-        secondaryColor="#ecebeb"
-      >
-        <rect x="88" y="14" rx="5" ry="5" width="400" height="400" />
-        <rect x="8" y="12" rx="0" ry="0" width="64" height="64" />
-        <rect x="8" y="112" rx="0" ry="0" width="64" height="64" />
-        <rect x="8" y="212" rx="0" ry="0" width="64" height="64" />
-      </ContentLoader>
-    )
 
     console.log("MAIN", mainComponent)
 
@@ -77,7 +61,7 @@ class ToggleableComponent extends Component {
         </div>
         <div
           style={
-            this.state.divHeight != 0
+            this.state.divHeight !== 0
               ? { height: `${this.state.divHeight}px` }
               : {}
           }

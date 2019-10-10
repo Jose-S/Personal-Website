@@ -48,11 +48,11 @@ const MainMenu = () => (
           {props.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(
             (item, index) => (
               <Link
-                to={item.title == "Work" ? "/" : `/${item.object_slug}`}
+                to={item.title === "Work" ? "/" : `/${item.object_slug}`}
                 key={item.title}
                 className={styles.menu_item}
                 style={
-                  index ==
+                  index ===
                   //  Last menu item had not right spacing
                   props.allWordpressWpApiMenusMenusItems.edges[0].node.items
                     .length -

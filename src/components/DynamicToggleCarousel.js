@@ -50,7 +50,9 @@ class DynamicToggleCarousel extends Component {
         <h4
           key={index}
           className={`${styles.title_toggle} ${
-            index == this.state.currentPosition ? styles.fadeIn : styles.fadeOut
+            index === this.state.currentPosition
+              ? styles.fadeIn
+              : styles.fadeOut
           }`}
         >
           {title}
@@ -76,11 +78,13 @@ class DynamicToggleCarousel extends Component {
         <p
           key={index}
           className={
-            index == this.state.currentPosition ? styles.fadeIn : styles.fadeOut
+            index === this.state.currentPosition
+              ? styles.fadeIn
+              : styles.fadeOut
           }
           style={{
             top: "0",
-            position: `${index == largestI ? "relative" : "absolute"}`,
+            position: `${index === largestI ? "relative" : "absolute"}`,
           }}
         >
           {caption}
