@@ -1,6 +1,5 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import "react-lazy-load-image-component/src/effects/blur.css"
 import styles from "../../styles/zoom-image.module.scss"
 import LazyZoomImage from "../LazyZoomImage"
 

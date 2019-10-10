@@ -1,6 +1,5 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import "react-lazy-load-image-component/src/effects/blur.css"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.css"
 import styles from "../../styles/carousel.module.scss"

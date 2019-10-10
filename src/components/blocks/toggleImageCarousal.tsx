@@ -1,6 +1,5 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import "react-lazy-load-image-component/src/effects/blur.css"
 import "react-responsive-carousel/lib/styles/carousel.css"
 import DynamicToggleCarousel from "../DynamicToggleCarousel"
 const ToggleImageCarousal: React.FC<IWPGBlock> = props => {
