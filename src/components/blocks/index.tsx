@@ -7,7 +7,7 @@ const RotatingTextAnimation = loadable(() =>
 const InlineText = loadable(() => import("./inlineText"))
 const ProcessHeader = loadable(() => import("./process-header"))
 const IconBulletContent = loadable(() => import("./icon-bullet-content"))
-const IconBulletContainer = loadable(() => import("./iconBulletContainer"))
+const IconBulletContainer = loadable(() => import("./IconBulletContainer"))
 const ZoomImage = loadable(() => import("./zoomImage"))
 const ZoomImageGrid = loadable(() => import("./zoomImageGrid"))
 const HeadingBullet = loadable(() => import("./headingBullet"))
