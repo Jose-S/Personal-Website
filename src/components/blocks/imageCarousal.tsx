@@ -1,9 +1,17 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import { Carousel } from "react-responsive-carousel"
-import "react-responsive-carousel/lib/styles/carousel.css"
-import styles from "../../styles/carousel.module.scss"
+// import "../../styles/carousel-styles.scss"
+// import styles from "../../styles/carousel.module.scss"
 import ImageZoom from "react-medium-image-zoom/lib/ImageZoom"
+import "../../styles/carousel-styles.scss"
+
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+} from "pure-react-carousel"
 
 const ImageCarousal: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
@@ -39,12 +47,14 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
     imgList.forEach((img, index) =>
       col.push(
         //   <img src={img.display_image.url}></img>
-        <ImageZoom
-          key={index}
-          image={{
-            src: img.url,
-          }}
-        />
+        <Slide index={index}>
+          <ImageZoom
+            key={index}
+            image={{
+              src: img.url,
+            }}
+          />
+        </Slide>
       )
     )
 
@@ -52,15 +62,27 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
   }
 
   return (
-    <Carousel
-      showThumbs={true}
-      showStatus={false}
-      className={styles.wrapper_container}
-      onChange={current => on_change(current)}
-      selectedItem={selected_item}
+    <CarouselProvider
+      naturalSlideWidth={100}
+      naturalSlideHeight={125}
+      orientation="horizontal"
+      totalSlides={imgList.length}
+      currentSlide={selected_item}
     >
-      {createZoomImages()}
-    </Carousel>
+      <Slider>{createZoomImages()}</Slider>
+      <ButtonBack>Back</ButtonBack>
+      <ButtonNext>Next</ButtonNext>
+    </CarouselProvider>
+
+    // <Carousel
+    //   showThumbs={true}
+    //   showStatus={false}
+    //   className={styles.wrapper_container}
+    //   onChange={current => on_change(current)}
+    //   selectedItem={selected_item}
+    // >
+    //   {createZoomImages()}
+    // </Carousel>
   )
 }
 

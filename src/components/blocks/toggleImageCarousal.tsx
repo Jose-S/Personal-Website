@@ -1,7 +1,8 @@
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import "react-responsive-carousel/lib/styles/carousel.css"
+// import "../../styles/carousel-styles.scss"
 import DynamicToggleCarousel from "../DynamicToggleCarousel"
+
 const ToggleImageCarousal: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
@@ -22,7 +23,7 @@ const ToggleImageCarousal: React.FC<IWPGBlock> = props => {
       <DynamicToggleCarousel
         mainImages={images.map(img => img.display_image)}
         toggledImages={images.map(img => img.toggle_image)}
-        nnerHTML={props.innerHTML}
+        innerHTML={props.innerHTML}
         innerBlocks={props.innerBlocks}
         blockName={props.blockName}
         titles={images.map(img => img.title)}

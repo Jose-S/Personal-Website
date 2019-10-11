@@ -9,7 +9,6 @@ import { WPGBlock } from "react-gutenberg"
 import GetCustomBlock from "../components/blocks"
 import styles from "../styles/large-title.module.scss"
 import ProjectItems from "../components/ProjectItems"
-import "react-responsive-carousel/lib/styles/carousel.css"
 
 const IndexPage = () => (
   <Layout>

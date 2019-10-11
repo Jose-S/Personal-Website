@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import ImageCarousal from "./blocks/imageCarousal"
 import ToggleableComponent from "./ToggleableComponent"
-import "react-responsive-carousel/lib/styles/carousel.css"
+// import "../styles/carousel-styles.scss"
 import styles from "../styles/carousel.module.scss"
 
 class DynamicToggleCarousel extends Component {

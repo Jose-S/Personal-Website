@@ -3,7 +3,6 @@
 const path = require(`path`)
 const slash = require(`slash`)
 const isProd = process.env.NODE_ENV === "production"
-
 const componentLibPath = path.resolve(__dirname, "./src/components")
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
@@ -156,59 +155,68 @@ exports.createPages = async ({ graphql, actions }) => {
 //   })
 // }
 
-exports.onCreateWebpackConfig = (
-  { actions, loaders, stage },
-  { cssLoaderOptions = {}, postCssPlugins, ...sassOptions }
-) => {
-  const isSSR = stage.includes(`html`)
+// exports.onCreateWebpackConfig = (
+//   { actions, loaders, stage },
+//   { cssLoaderOptions = {}, postCssPlugins, ...sassOptions }
+// ) => {
+//   const isSSR = stage.includes(`html`)
 
-  const use = [
-    loaders.css({ ...cssLoaderOptions, modules: true }),
-    loaders.postcss({ plugins: postCssPlugins }),
-    {
-      loader: require.resolve("sass-loader"),
-      options: {
-        sourceMap: !isProd,
-        ...sassOptions,
-      },
-    },
-    // {
-    //   loader: "sass-resources-loader",
-    //   options: {
-    //     resources: [
-    //       path.resolve(
-    //         __dirname,
-    //         "./component-library/assets/stylesheets/_variables.scss"
-    //       ),
-    //       path.resolve(
-    //         __dirname,
-    //         "./component-library/assets/stylesheets/_mixins.scss"
-    //       ),
-    //     ],
-    //   },
-    // },
-  ]
+//   const use = [
+//     loaders.css({ ...cssLoaderOptions, modules: true }),
+//     loaders.postcss({ plugins: postCssPlugins }),
+//     {
+//       loader: require.resolve("sass-loader"),
+//       options: {
+//         sourceMap: !isProd,
+//         ...sassOptions,
+//       },
+//     },
+//     // {
+//     //   loader: "sass-resources-loader",
+//     //   options: {
+//     //     resources: [
+//     //       path.resolve(
+//     //         __dirname,
+//     //         "./component-library/assets/stylesheets/_variables.scss"
+//     //       ),
+//     //       path.resolve(
+//     //         __dirname,
+//     //         "./component-library/assets/stylesheets/_mixins.scss"
+//     //       ),
+//     //     ],
+//     //   },
+//     // },
+//   ]
 
-  if (!isSSR) use.unshift(loaders.miniCssExtract())
+//   if (!isSSR) use.unshift(loaders.miniCssExtract())
 
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.s(a|c)ss$module/,
-          use,
-          exclude: /node_modules\/(?!react-component-library)/,
-        },
-      ],
-    },
-    resolve: {
-      alias: {
-        "component-library": `${componentLibPath}`,
-        components: `${componentLibPath}/components`,
-        utils: `${componentLibPath}/utils`,
-        config: `${componentLibPath}/config`,
-      },
-      extensions: [".js", ".jsx"],
-    },
-  })
-}
+//   actions.setWebpackConfig({
+//     module: {
+//       rules: [
+//         {
+//           test: /\.s(a|c)ss$module/,
+//           use,
+//           exclude: /node_modules\/(?!react-component-library)/,
+//         },
+//         {
+//           test: /\.css$/,
+//           use: [
+//             "to-string-loader",
+//             "style-loader",
+//             "css-loader",
+//             "postcss-loader",
+//           ],
+//         },
+//       ],
+//     },
+//     resolve: {
+//       alias: {
+//         "component-library": `${componentLibPath}`,
+//         components: `${componentLibPath}/components`,
+//         utils: `${componentLibPath}/utils`,
+//         config: `${componentLibPath}/config`,
+//       },
+//       extensions: [".js", ".jsx"],
+//     },
+//   })
+// }
