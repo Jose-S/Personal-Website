@@ -10,11 +10,11 @@ const React = require("react")
 const Layout = require("./src/components/layout").default
 
 exports.wrapPageElement = ({ element, props }) => {
-  console.log("WRAPPER, ", element.props.custom404, element)
+  console.log("WRAPPER, ", element.props.pageResources.page.path, element)
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
   // Only add the layout if its not the 404 Page
-  if (!element.props.custom404) {
+  if (element.props.pageResources.page.path !== "/404.html") {
     return <Layout {...props}>{element}</Layout>
   }
 }
