@@ -6,6 +6,7 @@ import { IWPGBlock } from "react-gutenberg/"
 import ImageZoom from "react-medium-image-zoom/lib/ImageZoom"
 import "../../styles/carousel-styles.scss"
 import styles from "../../styles/carousel.module.scss"
+
 import {
   CarouselProvider,
   Slider,
@@ -49,7 +50,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
       : JSON.parse(decodeURI(controler)).map(img => img.display_image)
 
   const numOfSlides = imgList.length
-
+  const increment = 100 / numOfSlides
   // Returns a typed component from react-typed component made by
   // ssbeefeater (https://www.npmjs.com/package/react-typed)
 
@@ -138,7 +139,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
           className={styles.carousel_buttons_left}
           onClick={() => changeSlideIndexTo(currentSlide - 1)}
         >
-          <svg viewBox="0 0 100 100">
+          <svg className={styles.button_arrow} viewBox="0 0 100 100">
             <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
           </svg>
         </ButtonBack>
@@ -146,13 +147,22 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
           className={styles.carousel_buttons_right}
           onClick={() => changeSlideIndexTo(currentSlide + 1)}
         >
-          <svg viewBox="0 0 100 100">
+          <svg className={styles.button_arrow} viewBox="0 0 100 100">
             <path
               d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"
               transform="translate(100, 100) rotate(180)"
             ></path>
           </svg>
         </ButtonNext>
+        <div className={styles.dot_group_wrapper}>
+          <div
+            className={styles.dot_inner_wrapper}
+            style={{
+              left: `${currentSlide * increment}%`,
+              width: `${increment}%`,
+            }}
+          ></div>
+        </div>
       </CarouselProvider>
     </div>
 

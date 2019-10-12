@@ -119,6 +119,8 @@ class DynamicToggleCarousel extends Component {
           hideTitle={hideTitle}
           sizeClass={""}
         />
+        {/* DEVELOP BUG: WHEN THE SITE IS LOADED THE ABSOLUTE 
+        DIVS CONTAINING THE IMAGE'S CAPTION FLICKER (WORKS ON BUILD VERSION)*/}
         <div className={styles.stack_wrapper}>
           {this.createCaptions(captions)}
         </div>

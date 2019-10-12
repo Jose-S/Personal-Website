@@ -2,7 +2,7 @@
 @import "./Global/colors.scss";
 
 .dot {
-   border-radius: .25rem;
+   border-radius: 0.25rem;
    width: 24px;
    height: 8px;
    margin: 0;
@@ -37,7 +37,6 @@
    margin-top: var(--space-xs);
 }
 
-
 // Custom Carousel
 
 .carousel_container {
@@ -64,7 +63,7 @@
    height: 100%;
    position: absolute;
    border-radius: 2px;
-   opacity: .4;
+   opacity: 0.4;
    z-index: -1;
 }
 
@@ -97,22 +96,64 @@
    width: 44px;
    height: 44px;
    padding: 10px;
-   transition: background-color .3s;
+   transition: background-color 0.3s;
    -webkit-transform: translateY(-50%);
    transform: translateY(-50%);
    border: 0;
    border-radius: 50%;
-   background-color: hsla(0, 0%, 100%, .5);
+   background-color: hsla(0, 0%, 80%, 0.5);
 
+   &:hover {
+      background-color: hsla(0, 0%, 50%, 0.5);
+   }
 }
 
 .carousel_buttons_left {
    @extend .carousel_buttons;
-   translate: 5px;
-   // left: 5px;
+   left: 15%;
 }
 
 .carousel_buttons_right {
    @extend .carousel_buttons;
-   right: 5px;
+   right: 1.5%;
+}
+
+.dot_group_wrapper {
+   background: var(--gray-2);
+   position: relative;
+   width: 50%;
+   border-radius: 0.25rem;
+   height: .5rem;
+   margin: 0 auto;
+   @include margin-top--sm;
+}
+
+.dot_inner_wrapper {
+   background: var(--color-primary);
+   position: absolute;
+   height: .5rem;
+   border-radius: 0.25rem;
+   transition: all 0.5s ease;
+}
+
+.button_arrow {
+   fill: var(--black);
+}
+
+// IF I SWITCH TO ICONS INSTEAD OF SVG FOR BUTTON ICON
+i {
+   border: solid black;
+   border-width: 0 4px 4px 0;
+   display: inline-block;
+   padding: 6px;
+}
+
+.right {
+   transform: rotate(-45deg);
+   -webkit-transform: rotate(-45deg);
+}
+
+.left {
+   transform: rotate(135deg);
+   -webkit-transform: rotate(135deg);
 }
