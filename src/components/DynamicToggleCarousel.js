@@ -28,7 +28,8 @@ class DynamicToggleCarousel extends Component {
     console.log("Building a New Component: ")
   }
 
-  createCarousalComponent(imageControler) {
+  createCarousalComponent(imageControler, caption) {
+    console.log("CAROUSEL CAPTIONS", caption)
     return (
       <ImageCarousal
         innerHTML={this.innerHTML}
@@ -38,6 +39,7 @@ class DynamicToggleCarousel extends Component {
           controler: imageControler,
           selected_item: this.state.currentPosition,
           on_change: this.changePosition,
+          captions: caption,
         }}
       ></ImageCarousal>
     )
@@ -109,8 +111,11 @@ class DynamicToggleCarousel extends Component {
 
         <ToggleableComponent
           title={""}
-          mainComponent={this.createCarousalComponent(mainImages)}
-          toggledComponent={this.createCarousalComponent(toggledImages)}
+          mainComponent={this.createCarousalComponent(mainImages, captions)}
+          toggledComponent={this.createCarousalComponent(
+            toggledImages,
+            captions
+          )}
           hideTitle={hideTitle}
           sizeClass={""}
         />

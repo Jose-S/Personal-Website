@@ -98,20 +98,20 @@
 
 .focusRing___1airF {
    position: absolute;
-   top: 5px;
-   right: 5px;
-   bottom: 5px;
-   left: 5px;
-   pointer-events: none;
-   outline-width: 5px;
-   outline-style: solid;
-   outline-color: Highlight
+   // top: 5px;
+   // right: 5px;
+   // bottom: 5px;
+   // left: 5px;
+   // pointer-events: none;
+   // outline-width: 5px;
+   // outline-style: solid;
+   // outline-color: Highlight
 }
 
 @media (-webkit-min-device-pixel-ratio:0) {
    .focusRing___1airF {
       outline-style: auto;
-      outline-color: -webkit-focus-ring-color
+      // outline-color: -webkit-focus-ring-color
    }
 }
 
@@ -162,6 +162,11 @@
    bottom: 0;
    left: 0;
    background-color: #f4f4f4
+}
+
+.carousel_caption {
+   font-size: 1.25rem;
+   font-weight: 400;
 }
 
 /*# sourceMappingURL=react-carousel.es.css.map */
