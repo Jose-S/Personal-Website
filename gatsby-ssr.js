@@ -13,7 +13,7 @@ exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get
   // including location, data, etc - you don't need to pass it
   // If page is not 404
-  if (element.key !== "/404.html") {
+  if (!element.props.custom404) {
     return <Layout {...props}>{element}</Layout>
   }
 }
