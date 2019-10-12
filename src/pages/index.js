@@ -11,7 +11,7 @@ import styles from "../styles/large-title.module.scss"
 import ProjectItems from "../components/ProjectItems"
 
 const IndexPage = () => (
-  <Layout>
+  <>
     <StaticQuery
       query={graphql`
         {
@@ -60,7 +60,7 @@ const IndexPage = () => (
       )}
     />
     <ProjectItems />
-  </Layout>
+  </>
 )
 
 //   < WPGBlocks

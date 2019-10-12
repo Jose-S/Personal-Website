@@ -1,4 +1,6 @@
-// import createIcon from "templates/IconSvg"
+/* THIS IS A VERY IMPORTANT FILE! It querys WP Data using Qraphql. 
+This query data is then passed to its respective template.
+For example allWordpressWPProject data is passed to the Project.JS Template file*/
 
 const path = require(`path`)
 const slash = require(`slash`)
@@ -70,20 +72,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-
-      allWordpressWpMedia(filter: { localFile: { extension: { eq: "svg" } } }) {
-        edges {
-          node {
-            title
-            alt_text
-            acf {
-              stroke_one
-              stroke_two
-              stroke_three
-            }
-          }
-        }
-      }
     }
   `)
 
@@ -93,11 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const {
-    allWordpressPage,
-    allWordpressWpProject,
-    allWordpressWpMedia,
-  } = result.data
+  const { allWordpressPage, allWordpressWpProject } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -114,13 +98,14 @@ exports.createPages = async ({ graphql, actions }) => {
       // as a template component. The `context` is
       // optional but is often necessary so the template
       // can query data specific to each page.
+      // If the page is the work page dont add /Work
       path: edge.node.title === "Work" ? "/" : `/${edge.node.slug}/`,
       component: slash(pageTemplate),
       context: edge.node,
     })
   })
 
-  const postTemplate = path.resolve(`./src/templates/project.js`)
+  const projectTemplate = path.resolve(`./src/templates/project.js`)
   // We want to create a detailed page for each post node.
   // The path field stems from the original WordPress link
   // and we use it for the slug to preserve url structure.
@@ -128,95 +113,8 @@ exports.createPages = async ({ graphql, actions }) => {
   allWordpressWpProject.edges.forEach(edge => {
     createPage({
       path: `/work/${edge.node.slug}`,
-      component: slash(postTemplate),
+      component: slash(projectTemplate),
       context: edge.node,
     })
   })
 }
-
-// gatsby-node.js in root folder.
-// exports.onCreateWebpackConfig = ({ actions }) => {
-//   actions.setWebpackConfig({
-//     module: {
-//       rules: [
-//         {
-//           test: /\.jsx?$/,
-//           // loader: "stylelint-custom-processor-loader",
-//           // exclude: /node_modules/,
-//           test: /\.scss$module/,
-//           use: [
-//             "style-loader",
-//             "css-loader",
-//             "sass-loader, stylelint-custom-processor-loader",
-//           ],
-//         },
-//       ],
-//     },
-//   })
-// }
-
-// exports.onCreateWebpackConfig = (
-//   { actions, loaders, stage },
-//   { cssLoaderOptions = {}, postCssPlugins, ...sassOptions }
-// ) => {
-//   const isSSR = stage.includes(`html`)
-
-//   const use = [
-//     loaders.css({ ...cssLoaderOptions, modules: true }),
-//     loaders.postcss({ plugins: postCssPlugins }),
-//     {
-//       loader: require.resolve("sass-loader"),
-//       options: {
-//         sourceMap: !isProd,
-//         ...sassOptions,
-//       },
-//     },
-//     // {
-//     //   loader: "sass-resources-loader",
-//     //   options: {
-//     //     resources: [
-//     //       path.resolve(
-//     //         __dirname,
-//     //         "./component-library/assets/stylesheets/_variables.scss"
-//     //       ),
-//     //       path.resolve(
-//     //         __dirname,
-//     //         "./component-library/assets/stylesheets/_mixins.scss"
-//     //       ),
-//     //     ],
-//     //   },
-//     // },
-//   ]
-
-//   if (!isSSR) use.unshift(loaders.miniCssExtract())
-
-//   actions.setWebpackConfig({
-//     module: {
-//       rules: [
-//         {
-//           test: /\.s(a|c)ss$module/,
-//           use,
-//           exclude: /node_modules\/(?!react-component-library)/,
-//         },
-//         {
-//           test: /\.css$/,
-//           use: [
-//             "to-string-loader",
-//             "style-loader",
-//             "css-loader",
-//             "postcss-loader",
-//           ],
-//         },
-//       ],
-//     },
-//     resolve: {
-//       alias: {
-//         "component-library": `${componentLibPath}`,
-//         components: `${componentLibPath}/components`,
-//         utils: `${componentLibPath}/utils`,
-//         config: `${componentLibPath}/config`,
-//       },
-//       extensions: [".js", ".jsx"],
-//     },
-//   })
-// }

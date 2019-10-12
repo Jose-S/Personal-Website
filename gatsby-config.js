@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Jose Saravia`,
+    description: `A portfolio site for my UX Development and Design work. This site showcases kickass projects and experiments I've completed!`,
+    author: `@Jose-S`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -78,7 +78,7 @@ module.exports = {
           // see https://en.support.wordpress.com/security/two-step-authentication/#application-specific-passwords
           wpcom_app_clientSecret: process.env.WORDPRESS_CLIENT_SECRET,
           wpcom_app_clientId: "54793",
-          wpcom_user: "gatsbyjswpexample@gmail.com",
+          wpcom_user: "jose.sarvia99@gmail.com",
           wpcom_pass: process.env.WORDPRESS_PASSWORD,
 
           // If you use "JWT Authentication for WP REST API" (https://wordpress.org/plugins/jwt-authentication-for-wp-rest-api/)
@@ -135,9 +135,7 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    // Manage any Netlify hosting issues
     `gatsby-plugin-netlify`,
   ],
 }
