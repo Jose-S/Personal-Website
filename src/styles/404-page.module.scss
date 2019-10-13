@@ -1,0 +1,42 @@
+@import "./Global/spacing.scss";
+@import "./Global/colors.scss";
+
+
+.error_container_wrapper {
+   display: flex;
+   position: absolute;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+}
+
+.error_text_line {
+   @include margin-top--xxs;
+   @include margin-bottom--xxs;
+}
+
+.error_link {
+
+   text-decoration: none;
+
+   // Unvisited link
+   &:link {
+      color: var(--color-primary);
+   }
+
+   // Visited link
+   &:visited {
+      color: var(--color-primary);
+   }
+
+   //  Mouse Over Link
+   &:hover {
+      color: var(--color-secondary);
+   }
+
+   // Selected link
+   &:active {
+      color: var(--color-secondary);
+   }
+}
