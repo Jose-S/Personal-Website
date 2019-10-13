@@ -12,5 +12,7 @@ import Layout from "../components/layout"
 // ---------------- CODE ----------------------
 
 export default ({ pageContext }) => (
-  <h2>{`${pageContext.title} Under Construction 🚧`}</h2>
+  <Layout>
+    <h2>{`${pageContext.title} Under Construction 🚧`}</h2>
+  </Layout>
 )

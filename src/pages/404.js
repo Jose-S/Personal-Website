@@ -3,17 +3,26 @@
  */
 
 import React from "react"
-
-import Layout from "../components/layout"
 import SEO from "../components/seo"
+import styles from "../styles/404-page.module.scss"
 
 const NotFoundPage = () => (
   <>
     <SEO title="404: Not found" />
-    <h1>Oops...</h1>
-    <h1>You just hit a page that doesn&#39;t exist...</h1>
-    <h1>The sadness... 😭</h1>
-    <a href="https://www.josesaravia.design">Go back to Safety!</a>
+    <div className={styles.error_container_wrapper}>
+      <div>
+        <h2 className={styles.error_text_line}>Ooooooooops...</h2>
+        <h2 className={styles.error_text_line}>You hit a page...</h2>
+        <h2 className={styles.error_text_line}>It doesn&#39;t exist...</h2>
+        <h2 className={styles.error_text_line}>The sadness. 😭</h2>
+        <a
+          className={`text--xxl ${styles.error_link}`}
+          href="https://www.josesaravia.design"
+        >
+          Please save Me!
+        </a>
+      </div>
+    </div>
   </>
 )
 

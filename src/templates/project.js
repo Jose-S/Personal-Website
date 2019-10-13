@@ -17,11 +17,7 @@ import styles from "../styles/project.module.scss"
 
 // ---------------- CODE ----------------------
 
-// export default ({ pageContext }) => <Layout>{setContent(pageContext)}</Layout>
-
-export default ({ pageContext }) => {
-  return setContent(pageContext)
-}
+export default ({ pageContext }) => <Layout>{setContent(pageContext)}</Layout>
 
 function setContent(pageContext) {
   // If the case study is not under construction (Wordpress ACF fields are not empty)
