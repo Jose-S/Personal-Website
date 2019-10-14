@@ -1,14 +1,27 @@
+/**
+ *  This File maps to lazyblock/toggle-image
+ *  A Toggle Image is a toggleable component
+ *  It takes in two lazy loaded images, a title,
+ *  and a boolean deciding if title should be shown
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import styles from "../../styles/zoom-image.module.scss"
+// Components
 import LazyZoomImage from "../LazyZoomImage"
 import ToggleableComponent from "../ToggleableComponent"
+// Styles
+import styles from "../../styles/zoom-image.module.scss"
+
+// ----------- CODE -----------
 
 const ZoomImage: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  // Text to rotate animate
   const {
     title,
     loading_image,
@@ -25,6 +38,7 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
     content_style: boolean
   }
 
+  // Convert all images to objects
   const imgLoading =
     props.blockName === "lazyblock/zoom-image-grid"
       ? loading_image
@@ -45,27 +59,24 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
       ? display_image
       : JSON.parse(decodeURI(display_image_secondary))
 
-  // Returns a typed component from react-typed component made by
-  // ssbeefeater (https://www.npmjs.com/package/react-typed)
-
-  var mainContent = (
+  // Returns the main image to show
+  var mainContent: JSX.Element = (
     <LazyZoomImage
       src={imgDisplay.url}
       placeholderSrc={imgLoading.url}
-      srcClassName={styles.displayImage_full}
-      placeholderClassName={styles.placeholder_full}
     ></LazyZoomImage>
   )
 
-  var toggleContent = (
+  // Returns the image to toggle to
+  var toggleContent: JSX.Element = (
     <LazyZoomImage
       src={imgDisplaySecondary.url}
       placeholderSrc={imgLoadingSecondary.url}
-      srcClassName={styles.displayImage_full}
-      placeholderClassName={styles.placeholder_full}
     ></LazyZoomImage>
   )
 
+  // Passed togleable components to a higher-order
+  // Toggleable Component
   return (
     <div className="wpg-block">
       <ToggleableComponent

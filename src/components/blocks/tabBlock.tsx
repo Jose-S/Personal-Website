@@ -1,32 +1,43 @@
+/**
+ *  This File maps to lazyblock/tabs WP block.
+ *  Creates a set of tabs used to navigate/view different content
+ *  Currently it only supports text
+ *  TODO: Add Image and Video support  (Currently not urgent)
+ */
+
+// ----------- IMPORT -----------
+
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
+// Components
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs"
+// Styles
 import "../../styles/tabs-block.scss"
 
 const TabsBlock: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  // Text to rotate animate
   const { controler } = attrs as {
     controler: string
   }
 
-  // Used to add a line break after thw word "who"
   const content = JSON.parse(decodeURI(controler))
 
-  // Returns an array containing IconBulletContent elements
+  // Returns an array containing tab elements
   var createTabs = () => {
-    let col = []
+    let tabs = []
     content.forEach((tab, index) => {
-      col.push(<Tab key={index}>{tab.title}</Tab>)
+      tabs.push(<Tab key={index}>{tab.title}</Tab>)
     })
-    return col
+    return tabs
   }
 
   var createTabPanels = () => {
-    let col = []
+    let panels = []
 
+    // Fnds the index of the longest tab content (Most words)
+    // THis is used to set the height of the tab panel
     let largestI = 0
     content.forEach((tab, i) => {
       if (tab.content.length > content[largestI].content.length) {
@@ -34,10 +45,10 @@ const TabsBlock: React.FC<IWPGBlock> = props => {
       }
     })
 
-    console.log("WINNER", largestI)
-
+    // THe tab with the longest tab content will be positioned relatively
+    // and the rest will be placed absolutely
     content.forEach((tab, index) => {
-      col.push(
+      panels.push(
         <TabPanel
           key={index}
           style={{
@@ -49,12 +60,14 @@ const TabsBlock: React.FC<IWPGBlock> = props => {
         </TabPanel>
       )
     })
-    return col
+    return panels
   }
 
   return (
-    <Tabs forceRenderTabPanel={true}>
+    <Tabs className="wpg-block" forceRenderTabPanel={true}>
+      {/* TAB TITLES */}
       <TabList>{createTabs()}</TabList>
+      {/* TAB CONTENT */}
       <div className="stack_wrapper">{createTabPanels()}</div>
     </Tabs>
   )

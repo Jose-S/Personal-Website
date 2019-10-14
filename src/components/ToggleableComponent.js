@@ -1,9 +1,23 @@
+/**
+ * This id a higher-order component used to toggle between two components
+ * These componnets should be of the same type (not necessary, but has not
+ * been tested for different types)
+ *
+ * TOOD: CHANGE TO FUNCTIONAL COMPONENT WITH HOOKS
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React, { Component } from "react"
+// Component
 import Toggle from "react-toggle"
+import Tippy from "@tippy.js/react"
+// Style
 import "../styles/Global/toggle-react.scss"
 import styles from "../styles/toggle-component.module.scss"
-import Tippy from "@tippy.js/react"
-// import "tippy.js/themes/google.css"
+
+// ----------- CODE -----------
 
 class ToggleableComponent extends Component {
   static defaultProperties = {
@@ -34,9 +48,11 @@ class ToggleableComponent extends Component {
 
     return (
       <div className={styles.container_wrapper}>
+        {/* Title and toggle button */}
         <div className={styles.title_wrapper}>
           {hideTitle ? <></> : <h4 className={styles.title}>{title}</h4>}
 
+          {/* Toggle tooltip description */}
           <Tippy
             content={
               this.state.toggle
@@ -48,7 +64,7 @@ class ToggleableComponent extends Component {
             theme="google"
             animateFill={false}
             duration={[250, 175]}
-            delay={[1000, 0]}
+            delay={[500, 0]}
             distance={16}
           >
             <div className={styles.toggle_wrapper}>
@@ -59,6 +75,10 @@ class ToggleableComponent extends Component {
             </div>
           </Tippy>
         </div>
+
+        {/* Wrapper div ensures that while toggling the
+         height of the component is not equal to 0 for a brief second.
+         This fixes a component shrink on toggle bug*/}
         <div
           style={
             this.state.divHeight !== 0
@@ -68,8 +88,9 @@ class ToggleableComponent extends Component {
           className={sizeClass}
           ref={input => (this.divElement = input)}
         >
+          {/* Wraps both components by stacking them and only showing them if toggled */}
           <div className={styles.components_wrapper}>
-            {/* <LazyLoadComponent placeholder={<MyLoader />}> */}
+            {/* Main view facing element */}
             <div
               className={`${styles.main_component_wrapper} ${
                 !this.state.toggle ? styles.fadeIn : styles.fadeOut
@@ -77,9 +98,8 @@ class ToggleableComponent extends Component {
             >
               {mainComponent}
             </div>
-            {/* </LazyLoadComponent> */}
-            {/* {!this.state.toggle && mainComponent} */}
-            {/* <LazyLoadComponent placeholder={<MyLoader />}> */}
+
+            {/* Toggle view component */}
             <div
               className={`${styles.toggle_component_wrapper} ${
                 this.state.toggle ? styles.fadeIn : styles.fadeOut
@@ -87,11 +107,11 @@ class ToggleableComponent extends Component {
             >
               {toggledComponent}
             </div>
-            {/* </LazyLoadComponent> */}
           </div>
         </div>
       </div>
     )
   }
 }
+
 export default ToggleableComponent

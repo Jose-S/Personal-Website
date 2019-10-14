@@ -1,3 +1,8 @@
+/**
+ * This page creates the home page
+ * TODO: MAJOR REFACTORING AND LAYOUT CHANGES
+ * WILL INCORPORATE ANIMATION
+ */
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
@@ -26,9 +31,7 @@ const IndexPage = () => (
                   innerHTML
                   attrs {
                     inline_text
-                    first_text
-                    second_text
-                    third_text
+                    controler
                     blockId
                     blockUniqueClass
                   }
@@ -63,8 +66,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-//   < WPGBlocks
-// blocks = { props.allWordpressPage.edges[0].node.blocks }
-// mapToBlock = { GetCustomBlock }
-//   ></WPGBlocks >
 export default IndexPage

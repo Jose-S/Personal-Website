@@ -8,6 +8,11 @@
 
 .nav_item_label {
   margin: 0px;
+  margin-bottom: 0px;
+}
+
+.nav_item_box {
+  padding: var(--space-unit) 0;
 }
 
 .nav_item_wrapper {

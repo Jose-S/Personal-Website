@@ -1,31 +1,41 @@
+/**
+ *  This File maps to lazyblock/zoom-image-grid
+ *  An image dialog contains a lazy loaded image and caption
+ *  The image is zoomabale (medium style)
+ *  is_toggle determines which image to laod from the controler
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import styles from "../../styles/zoom-image.module.scss"
+// Components
 import ZoomImage from "./zoomImage"
+// Styles
+import styles from "../../styles/zoom-image.module.scss"
 
 const ZoomImageGrid: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
-  // The Controller contains a URI with data
+
   const { grid_style, controler, is_toggle = false } = attrs as {
     grid_style: string
     controler: string
     is_toggle: boolean
   }
 
-  console.log("Create Image ZOOM GRID", grid_style)
-  // Decode UR Data to an array of objects
   const zoomImages = JSON.parse(decodeURI(controler))
 
-  // Returns an array containing IconBulletContent elements
+  // Returns an array containing Zoom Image elements
   var createZoomImages = () => {
-    let col = []
+    let images = []
     zoomImages.forEach((zoomImg, index) => {
+      // Mutate Display Image to point to Toggle Image
       if (is_toggle) {
         zoomImg.display_image = zoomImg.toggle_image
       }
-
-      col.push(
+      images.push(
         <ZoomImage
           innerHTML={props.innerHTML}
           innerBlocks={props.innerBlocks}
@@ -36,7 +46,7 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
       )
     })
 
-    return col
+    return images
   }
 
   return (
@@ -46,16 +56,4 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
   )
 }
 
-// function getGridType(choice: string) {
-//   switch (type) {
-//     case "TwoTwo":
-//       return styles.image_grid_two_one
-//     case "TwoOne":
-//       return styles.image_grid_two_one
-//     case "TwoThree":
-//       return styles.image_grid_two_one
-//     default:
-//       return styles.image_grid_two_one
-//   }
-// }
 export default ZoomImageGrid

@@ -1,7 +1,20 @@
+/**
+ * This File maps to lazyblock/icon-bullet-col WP block.
+ * An Icon Bullet Container has a list of Icon Bullets and
+ * defined grid style.
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import IconBulletContent from "./icon-bullet-content"
+//Components
+import IconBulletContent from "./iconBullet"
+//Styles
 import styles from "../../styles/container-styles.module.scss"
+
+// ----------- CODE -----------
 
 const IconBulletContainer: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
@@ -13,8 +26,8 @@ const IconBulletContainer: React.FC<IWPGBlock> = props => {
     grid_style: string
   }
 
-  // Decode UR Data to an array of objects
-  const iconBullets = JSON.parse(decodeURI(controler))
+  // Decode URI Data to an array of objects
+  const iconBullets: Array<any> = JSON.parse(decodeURI(controler))
 
   // Returns an array containing IconBulletContent elements
   var createIconBullets = () => {

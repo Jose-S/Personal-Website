@@ -1,22 +1,38 @@
+/**
+ * This file contains a component that transforms
+ * an svg file into an inline svg elelement.
+ * An inline SVG element allows me to apply CSS classes to each
+ * stroke, manipualte its size using the default font, and in the future
+ * animate them.
+ *
+ * The componnet takes in:
+ *   - A src either an object with a url or a string url
+ *   - The size of the icon in "00px" format
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
+// Component
 import ReactSVG from "react-svg"
-import styles from "../styles/Global/icon.module.scss"
 import IconPlaceholder from "../images/IconPlaceholder.svg"
+// Styles
+import styles from "../styles/Global/icon.module.scss"
 
-var icons = {}
-console.log("ICONS", icons)
+// ----------- CODE -----------
 
-// Default Props with destructuring
-// src: Image Object
-// className: Style Class
 const Icon = ({ src, size = "" }) => {
+  console.log("ICON URL PRE", src, typeof src)
+
   const { title, url } = src
+  // Type chck if its an object
   console.log("ICON URL", url)
   // Create an SVG React Component
   return (
     <ReactSVG
       title={title}
-      src={url}
+      src={typeof src === `string` ? src : url}
       fallback={() => (
         <img
           src={IconPlaceholder}
@@ -33,6 +49,46 @@ const Icon = ({ src, size = "" }) => {
   )
 }
 
+// Post Load
+// Adds attributes to svg after load
+function postLoad(error, svg) {
+  // Handle Errors
+  if (error) {
+    return
+  }
+  let paths = svg.getElementsByTagName("path")
+
+  // Adds diffrentstyles to svg paths depending on the number of paths
+  switch (paths.length) {
+    case 1:
+      resetClass(paths[0], styles.light_icon_color)
+      break
+    case 3:
+      resetClass(paths[0], styles.icon_stroke_one)
+      resetClass(paths[1], styles.icon_stroke_two)
+      resetClass(paths[2], styles.icon_stroke_three)
+      break
+    default:
+      console.log("ERROR NO PATHS. SVG OUTPUT: ", svg)
+  }
+}
+
+// Pre Load
+// Adds attributes to svg before load
+function preLoad(svg) {
+  // console.log("IM BEOFRE", svg) // For Testing
+  svg.classList.add(styles.icon)
+  // Make sure svg is set to
+  svg.setAttribute(`width`, `1em`)
+  svg.setAttribute(`height`, `1em`)
+  // Make sure svg scales to the view bounds and not the view box
+  // Makes sure proportions are kept and font size adjusts icon
+  svg.setAttribute(`preserveAspectRatio`, `MidYMid meet`)
+}
+
+// ----------- UTILITY -----------
+
+// Function maps a tring size to a css class
 function getSize(px) {
   switch (px) {
     case "12px":
@@ -55,34 +111,6 @@ function resetClass(element, newClass = "") {
   let classList = element.classList
   classList.remove(classList.item(0))
   classList.add(newClass)
-}
-
-// Post Load
-function postLoad(error, svg) {
-  // Handle Errors
-  if (error) {
-    // Removed FOr Testing
-    // console.error(error)
-    return
-  }
-  // Add classes to svg paths
-  let paths = svg.getElementsByTagName("path")
-  // Main Path Classes
-  resetClass(paths[0], styles.icon_stroke_one)
-  resetClass(paths[1], styles.icon_stroke_two)
-  resetClass(paths[2], styles.icon_stroke_three)
-}
-
-// Pre Load
-function preLoad(svg) {
-  console.log("IM BEOFRE", svg)
-  svg.classList.add(styles.icon)
-  // Make sure svg is set to
-  svg.setAttribute(`width`, `1em`)
-  svg.setAttribute(`height`, `1em`)
-  // Make sure svg scales to the view bounds and not the view box
-  // Makes sure proportions are kept and font size adjusts icon
-  svg.setAttribute(`preserveAspectRatio`, `MidYMid meet`)
 }
 
 export default Icon

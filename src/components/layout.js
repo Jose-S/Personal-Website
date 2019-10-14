@@ -1,31 +1,25 @@
 /**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * Layout component that creates a header, main, and footer section
+ * Higher-order component that accepts child components
  */
 
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import PropTypes from "prop-types"
-// import { useStaticQuery, graphql } from "gatsby"
-
+// Components
+import Header from "./Header"
+import Footer from "./Footer"
+// Styles
 import "../styles/Global/layout.scss"
-import MainMenu from "./MainMenu"
+
+// ----------- CODE -----------
 
 const Layout = ({ children }) => {
-  // const data = useStaticQuery(graphql`
-  //   query SiteTitleQuery {
-  //     site {
-  //       siteMetadata {
-  //         title
-  //       }
-  //     }
-  //   }
-  // `)
-
   return (
     <>
-      <MainMenu />
+      <Header />
       <div
         style={{
           margin: `0 auto`,
@@ -35,11 +29,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <Footer />
       </div>
     </>
   )

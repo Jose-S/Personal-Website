@@ -1,35 +1,25 @@
+/**
+ * Creates a loading image placeholder from the given source (usually a 1kb image file)
+ * This image is either blured or if not provided a conten loader svg rectangle is uses as
+ * the placeholder.
+ */
+
+// ----------- IMPORT -----------
+
 import React from "react"
 import ContentLoader from "react-content-loader"
+
+// ----------- CODE -----------
 
 const LoadingImage = ({ src, srcClassName = "", positionClass = "" }) => {
   // Blur Up the image
   if (src !== "") {
     return (
-      <div
-        className={srcClassName}
-        // style={{ overflow: "hidden", position: "relative", width: "100%" }}
-      >
-        <img
-          alt={"placeholder"}
-          src={src}
-          className={positionClass}
-          // style={{ width: "100%", filter: "blur(10px)" }}
-        />
+      <div className={srcClassName}>
+        <img alt={"placeholder"} src={src} className={positionClass} />
       </div>
-      // LEFT HERWE IF I DECIDE TO USE AN SVG FILTER INSTEAD
-      // <svg
-      //   xmlns="http://www.w3.org/2000/svg"
-      //   xmlnsXlink="http://www.w3.org/1999/xlink"
-      //   viewBox="1 1 6 4"
-      //   className={srcClassName}
-      // >
-      //   <image filter="url(#b)" width="8" height="6" xlinkHref={src} />
-      //   <filter id="b">
-      //     <feGaussianBlur stdDeviation=".5" />
-      //   </filter>
-      // </svg>
     )
-    // Return a loading svg
+    // Return a loading svg with fade animation
   } else {
     return (
       <ContentLoader

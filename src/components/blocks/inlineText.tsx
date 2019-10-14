@@ -1,3 +1,11 @@
+/**
+ *  This is a very speciifc component used to troubleshoot
+ *  the animated text on th efront page
+ */
+
+// ----------- IMPORT -----------
+
+//Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
 
@@ -5,7 +13,6 @@ const InlineText: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  // Text to rotate animate
   const { inline_text } = attrs as {
     inline_text: string
   }

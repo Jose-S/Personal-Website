@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 /*
+
+  WILL USE IN THE FUTUER WHEN API SUPPORTS ME NEEDS
  * This component is built using `gatsby-image` to automatically serve optimized
  * images with lazy loading and reduced file sizes. The image is loaded using a
  * `useStaticQuery`, which allows us to load the image from directly within this
@@ -12,6 +14,9 @@ import Img from "gatsby-image"
  * - `gatsby-image`: https://gatsby.dev/gatsby-image
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
+
+//  SADLY I CAN'T USE THIS FOR LAZY LOADING IMAGES FROM WP becase I can not currently lazyload images
+// that are inside of a block
 
 const Image = () => {
   const data = useStaticQuery(graphql`

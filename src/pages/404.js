@@ -1,5 +1,5 @@
 /**
- * This page creates a
+ * This page creates a 404 page
  */
 
 import React from "react"

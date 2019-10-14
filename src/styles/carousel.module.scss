@@ -42,6 +42,7 @@
 .carousel_container {
    display: flex;
    flex-direction: row;
+   flex-wrap: wrap;
 }
 
 .carousel_thumbs_container {
@@ -138,6 +139,10 @@
 
 .button_arrow {
    fill: var(--black);
+}
+
+.carousel_image {
+   width: 100%;
 }
 
 // IF I SWITCH TO ICONS INSTEAD OF SVG FOR BUTTON ICON

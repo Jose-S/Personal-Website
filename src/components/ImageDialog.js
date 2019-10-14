@@ -1,19 +1,34 @@
-import React, { useState } from "react"
-import Modal from "react-responsive-modal"
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
-import styles from "../styles/image-dialog.module.scss"
-// import LazyLoad from "react-lazyload"
+/**
+ * This file creates a lazy loaded
+ * image with a modal dialog.
+ *
+ * The componnet takes in:
+ *   - A src of the image to lazyload
+ *   - A src to the lazyload placeholder
+ *   - The title and caption of the image
+ */
 
+// ----------- IMPORT -----------
+
+// Boiler
+import React, { useState } from "react"
+// Components
+import Modal from "react-responsive-modal"
 import LazyLoad from "react-lazy-load"
 import LoadingImage from "./LoadingImage"
-const ImageDialog = ({ src, placeholderSrc = "", title, caption }) => {
-  // Lazy loads an image zoom component
+// Styles
+import styles from "../styles/image-dialog.module.scss"
 
+// ----------- CODE -----------
+
+const ImageDialog = ({ src, placeholderSrc = "", title, caption }) => {
+  // Hooks control the behaviour of this image
   const [openDialog, setOpenDialog] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   return (
     <>
+      {/* Layload the image */}
       <div className={styles.images_wrapper}>
         <LoadingImage
           src={placeholderSrc}
@@ -39,6 +54,7 @@ const ImageDialog = ({ src, placeholderSrc = "", title, caption }) => {
         <small className={styles.caption}>{title}</small>
       </div>
 
+      {/* Image inside of modal */}
       <Modal
         open={openDialog}
         onClose={() => setOpenDialog(false)}

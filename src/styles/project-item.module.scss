@@ -1,5 +1,6 @@
 @import "./Global/grid_layouts.scss";
 @import "./Global/spacing.scss";
+@import "./Global/colors.scss";
 
 .item_grid {
    // display: inline-grid;
@@ -58,11 +59,14 @@
    opacity: 0;
    transition: all 0.2s ease-in-out;
    border-radius: 8px;
+
    /* FOR TESTING */
    /* border: 3px solid green; */
-}
 
-.exceprt:hover {
-   opacity: 1;
-   transition: all 0.2s ease-in-out;
+
+   &:hover {
+      color: var(--black);
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+   }
 }

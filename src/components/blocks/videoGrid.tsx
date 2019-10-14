@@ -1,28 +1,38 @@
+/**
+ *  This File maps to lazyblock/video-grid
+ *  Takes in a list of video link (From vimeo)
+ *  A grid style and content style. The content style
+ *  decides if the video has a dialog.
+ *
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import styles from "../../styles/zoom-image.module.scss"
+// Components
 import HoverVideo from "../HoverVideo"
+// Styles
+import styles from "../../styles/zoom-image.module.scss"
 
 const VideoGrid: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
-  // The Controller contains a URI with data
-  const { grid_style, controler, content_style } = attrs as {
+
+  const { controler, content_style, grid_style } = attrs as {
     grid_style: string
     content_style: boolean
     controler: string
   }
 
-  console.log("Create Image GRID", grid_style)
+  const videoLinks = JSON.parse(decodeURI(controler))
 
-  // Decode UR Data to an array of objects
-  const dialogImages = JSON.parse(decodeURI(controler))
-  console.log("VIDE SOURCE", dialogImages)
-  // Returns an array containing IconBulletContent elements
+  // Returns an array containing Video links, caption and title
   var createVideoThumbs = () => {
-    let col = []
-    dialogImages.forEach((vid, index) => {
-      col.push(
+    let videos = []
+    videoLinks.forEach((vid, index) => {
+      videos.push(
         <HoverVideo
           src={vid.url_source}
           placeholderSrc={vid.loading_image.url}
@@ -34,12 +44,9 @@ const VideoGrid: React.FC<IWPGBlock> = props => {
       )
     })
 
-    return col
+    return videos
   }
 
-  // Top margin is only added if the bloc is not rendered internally
-  // Ex: Inside of a toggle. This fixes a bug where the toggled coponent is slightly
-  // placed below the main component
   return (
     <div className={`wpg-block ${styles[grid_style]}`}>
       {createVideoThumbs()}

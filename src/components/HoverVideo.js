@@ -1,11 +1,28 @@
+/**
+ * This File contains a video component
+ * The video is played on hover and can
+ * be clicked to open a modal with the video
+ *
+ * The componnet takes in:
+ *   - A src of the video (Must be Vimeo Video)
+ *   - The src of the placeholder image (For lazyloading)
+ *   = A boolean that decided if the video opens a modal with more details
+ *   - Title and Captions of the vdeo
+ */
+
+// ----------- IMPORT -----------
+// Boiler
 import React, { useState } from "react"
+// Components
 import VimeoPlayer from "react-player/lib/players/Vimeo"
-import stylesVid from "../styles/video.module.scss"
 import Modal from "react-responsive-modal"
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
-import styles from "../styles/image-dialog.module.scss"
 import LazyLoad from "react-lazy-load"
 import LoadingImage from "./LoadingImage"
+// Styles
+import stylesVid from "../styles/video.module.scss"
+import styles from "../styles/image-dialog.module.scss"
+
+// ----------- CODE -----------
 
 const HoverVideo = ({
   src,
@@ -27,18 +44,29 @@ const HoverVideo = ({
     setOpenDialog(true)
   }
 
-  //   return (
-  //     <VimeoPlayer
-  //       width={"100%"}
-  //       height={"100%"}
-  //       url={src}
-  //       // wrapper={<span></span>}
-  //       onReady={() => setIsLoading(false)}
-  //     ></VimeoPlayer>
-  //   )
+  var createVideo = (src, insideModal) => {
+    var height = insideModal ? {} : { height: "100%" }
+    return (
+      <VimeoPlayer
+        url={src}
+        width="100%"
+        {...height}
+        className={insideModal ? stylesVid.hover_react_player : ""}
+        volume={insideModal ? 0.5 : 0}
+        muted={!insideModal}
+        playing={insideModal ? true : isHovered}
+        loop={true}
+        pip={false}
+        controls={insideModal}
+        onReady={insideModal ? () => {} : () => setIsLoading(false)}
+      />
+    )
+  }
 
   return (
     <>
+      {/* Lazy Loaded Video. It has div over it to allow hover
+     states on the video. Uses a loadng image to display as the video loads */}
       <div
         className={styles.images_wrapper}
         style={{ display: "inline-block", marginBottom: "0px" }}
@@ -50,7 +78,7 @@ const HoverVideo = ({
         ></LoadingImage>
 
         <LazyLoad
-          offsetVertical={1000}
+          offsetVertical={1500}
           className={styles.image_stacker__bottom}
         >
           <div
@@ -61,18 +89,7 @@ const HoverVideo = ({
               height: "100%",
             }}
           >
-            <VimeoPlayer
-              width={"100%"}
-              height={"100%"}
-              url={src}
-              playing={isHovered}
-              volume={0}
-              muted={true}
-              loop={true}
-              pip={false}
-              controls={false}
-              onReady={() => setIsLoading(false)}
-            ></VimeoPlayer>
+            {createVideo(src, false)}
             <div
               className={stylesVid.hover_video_pointer_area}
               onClick={toggleDialog}
@@ -82,127 +99,37 @@ const HoverVideo = ({
           </div>
         </LazyLoad>
       </div>
-      <Modal
-        open={openDialog}
-        onClose={() => setOpenDialog(false)}
-        center={true}
-        animationDuration={500}
-        classNames={{
-          modal: styles.video_modal_wrapper,
-          transitionEnter: styles.transitionEnter,
-          transitionEnterActive: styles.transitionEnterActive,
-          transitionExit: styles.transitionExitActive,
-          transitionExitActive: styles.transitionExitActive,
-        }}
-      >
-        <div className={styles.modal_content_wrapper}>
-          <h4 className={styles.modal_title}>{title}</h4>
-          <div className={styles.modal_image_wrapper} style={{ width: "80%" }}>
-            <VimeoPlayer
-              url={src}
-              width="100%"
-              className={stylesVid.hover_react_player}
-              volume={0.5}
-              muted={true}
-              playing={true}
-              loop={true}
-              pip={false}
-              controls={true}
-            />
+      {/* Video Modal. NEED TO MAKE VIDEO LOAD WITH A PLACEHOLDER */}
+      {hasDialog ? (
+        <Modal
+          open={openDialog}
+          onClose={() => setOpenDialog(false)}
+          center={true}
+          animationDuration={500}
+          classNames={{
+            modal: styles.video_modal_wrapper,
+            transitionEnter: styles.transitionEnter,
+            transitionEnterActive: styles.transitionEnterActive,
+            transitionExit: styles.transitionExitActive,
+            transitionExitActive: styles.transitionExitActive,
+          }}
+        >
+          <div className={styles.modal_content_wrapper}>
+            <h4 className={styles.modal_title}>{title}</h4>
+            <div
+              className={styles.modal_image_wrapper}
+              style={{ width: "80%" }}
+            >
+              {createVideo(src, true)}
+            </div>
+            <p>{caption}</p>
           </div>
-          <p>{caption}</p>
-        </div>
-      </Modal>
+        </Modal>
+      ) : (
+        <></>
+      )}
     </>
   )
-  //   return (
-  //     //  <div width="50%">
-  //     <>
-  //       <div
-  //         className={styles.images_wrapper}
-  //         styles={{ marginBottom: "0px", overflow: "none" }}
-  //       >
-  //         <LoadingImage
-  //           src={placeholderSrc}
-  //           srcClassName={isLoading ? stylesVid.fadeIn : stylesVid.fadeOut}
-  //           positionClass={styles.inner_loading_image}
-  //         ></LoadingImage>
-
-  //         <LazyLoad
-  //           offsetVertical={500}
-  //           width="100%"
-  //           //  onContentVisible={() => setIsLoading(false)}
-  //           className={stylesVid.image_stacker__bottom}
-  //         >
-  //           <div
-  //             className={stylesVid.hover_player_wrapper}
-  //             style={{ display: isLoading ? "none" : "block" }}
-  //           >
-  //             <VimeoPlayer
-  //               light={placeholderSrc}
-  //               url={src}
-  //               className={stylesVid.hover_react_player}
-  //               volume={0}
-  //               width="100%"
-  //               height="100%"
-  //               muted={true}
-  //               playing={isHovered}
-  //               loop={true}
-  //               pip={false}
-  //               controls={false}
-  //               playerOptions={{
-  //                 color: "558BFF", // PRIMARY COLOR THEME
-  //                 responsive: true,
-  //               }}
-  //               onReady={() => setIsLoading(false)}
-  //             />
-  //             <div
-  //               className={stylesVid.hover_video_pointer_area}
-  //               onClick={toggleDialog}
-  //               onMouseEnter={toggleHover}
-  //               onMouseLeave={toggleHover}
-  //             ></div>
-  //           </div>
-  //         </LazyLoad>
-  //       </div>
-
-  //       <Modal
-  //         open={openDialog}
-  //         onClose={() => setOpenDialog(false)}
-  //         center={true}
-  //         animationDuration={500}
-  //         classNames={{
-  //           modal: styles.modal_wrapper,
-  //           transitionEnter: styles.transitionEnter,
-  //           transitionEnterActive: styles.transitionEnterActive,
-  //           transitionExit: styles.transitionExitActive,
-  //           transitionExitActive: styles.transitionExitActive,
-  //         }}
-  //       >
-  //         <div className={styles.modal_content_wrapper}>
-  //           <h4 className={styles.modal_title}>{title}</h4>
-  //           <div className={styles.modal_image_wrapper} style={{ width: "80%" }}>
-  //             <VimeoPlayer
-  //               url={src}
-  //               width="100%"
-  //               className={stylesVid.hover_react_player}
-  //               volume={0.5}
-  //               muted={true}
-  //               playing={true}
-  //               loop={true}
-  //               pip={false}
-  //               controls={true}
-  //               playerOptions={{
-  //                 color: "558BFF", // PRIMARY COLOR THEME
-  //                 responsive: true,
-  //               }}
-  //             />
-  //           </div>
-  //           <p>{caption}</p>
-  //         </div>
-  //       </Modal>
-  //     </>
-  //     //  </div>
-  //   )
 }
+
 export default HoverVideo

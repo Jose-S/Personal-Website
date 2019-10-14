@@ -1,14 +1,22 @@
+/**
+ *  This File maps to lazyblock/toggle-image-carousel
+ *  An even more dynamic type of carousel
+ *  Passes data to a higher order component
+ *  The higher-order componnet creates two toggleable carousels
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-// import "../../styles/carousel-styles.scss"
+// Component
 import DynamicToggleCarousel from "../DynamicToggleCarousel"
 
 const ToggleImageCarousal: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  console.log("ImageCarousal", props)
-  // Text to rotate animate
   const { controler } = attrs as {
     controler: string
   }

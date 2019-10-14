@@ -1,10 +1,14 @@
-import React, { Component } from "react"
-import styles from "../styles/project-item.module.scss"
-import Tippy from "@tippy.js/react"
+/**
+ * Creates a selectable project item tha link to the project page
+ */
 
-// Import the Google theme from tippy.js
-// import "tippy.js/themes/google.css"
+// Boiler
+import React, { Component } from "react"
+// Component
+import Tippy from "@tippy.js/react"
 import { Link } from "gatsby"
+// Styles
+import styles from "../styles/project-item.module.scss"
 
 // Image not hoverable since it is under text
 // This bug was fixed by adding hover state variable to the componnet
@@ -35,6 +39,7 @@ class ProjectItem extends Component {
         delay={[1000, 0]}
         distance={16}
       >
+        {/* Link to Work Project if pressed */}
         <Link to={`/work/${slug}`}>
           <div className={styles.container}>
             <img
@@ -49,6 +54,7 @@ class ProjectItem extends Component {
               onMouseLeave={this.toggleHover}
               className={styles.exceprt}
             >
+              {/* Remove the paragraph tag] */}
               {excerpt.replace("<p>", "").replace("</p>", "")}
             </h4>
           </div>

@@ -1,12 +1,17 @@
-// src/blocks/index.tsx
+/**
+ *  VERY IMPORTANT: This file contains a function used to map all components
+ *  Each component is imported in an lazy loadable manner.
+ *  THIS FUNCTION DRIVES THE WHOLE WEBSITE!
+ */
+
+// ----------- IMPORT -----------
 import loadable from "@loadable/component"
 
-const RotatingTextAnimation = loadable(() =>
-  import("./rotating-type-animation")
-)
+// Imports all WP components
+const RotatingTextAnimation = loadable(() => import("./rotatingTypeAnimation"))
 const InlineText = loadable(() => import("./inlineText"))
 const ProcessHeader = loadable(() => import("./process-header"))
-const IconBulletContent = loadable(() => import("./icon-bullet-content"))
+const IconBullet = loadable(() => import("./iconBullet"))
 const IconBulletContainer = loadable(() => import("./IconBulletContainer"))
 const ZoomImage = loadable(() => import("./zoomImage"))
 const ZoomImageGrid = loadable(() => import("./zoomImageGrid"))
@@ -33,7 +38,7 @@ export default function GetCustomBlock(name: string) {
     case "lazyblock/process-header":
       return ProcessHeader
     case "lazyblock/icon-bullet-content":
-      return IconBulletContent
+      return IconBullet
     case "lazyblock/icon-bullet-col":
       return IconBulletContainer
     case "lazyblock/zoom-image":

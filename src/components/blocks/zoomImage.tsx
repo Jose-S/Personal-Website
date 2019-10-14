@@ -1,36 +1,46 @@
+/**
+ *  This File maps to lazyblock/zoom-image
+ *  Takes in an image to be lazy loaded and
+ *  caption to include
+ *
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
-import styles from "../../styles/zoom-image.module.scss"
+// Component
 import LazyZoomImage from "../LazyZoomImage"
+// Styles
+import styles from "../../styles/zoom-image.module.scss"
+
+// ----------- CODE -----------
 
 const ZoomImage: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  // Text to rotate animate
-  const { caption, loading_image, display_image } = attrs as {
-    caption: string
+  const { loading_image, display_image, caption } = attrs as {
     loading_image: string
     display_image: string
+    caption: string
   }
 
-  console.log("HAS IT CRASHED")
   const imgLoading =
     props.blockName !== "lazyblock/zoom-image"
       ? loading_image
       : JSON.parse(decodeURI(loading_image))
-  console.log("HAS IT CRASHED", imgLoading)
+
   const imgDisplay =
     props.blockName !== "lazyblock/zoom-image"
       ? display_image
       : JSON.parse(decodeURI(display_image))
 
-  console.log("CAPTION IS", caption)
-  // Returns a typed component from react-typed component made by
-  // ssbeefeater (https://www.npmjs.com/package/react-typed)
-
+  // Creates the caption using the images caption metadata
+  // and queried (WP Provided) caption
   var createCaption = () => {
-    if (caption != null) {
+    if (caption) {
       return (
         <small className={styles.caption}>
           <strong>{imgDisplay.caption}</strong>
@@ -40,14 +50,11 @@ const ZoomImage: React.FC<IWPGBlock> = props => {
     }
   }
 
-  console.log(display_image)
   return (
     <div className={styles.zoom_image_wrapper}>
       <LazyZoomImage
         src={imgDisplay.url}
         placeholderSrc={imgLoading.url}
-        srcClassName={styles.displayImage_full}
-        placeholderClassName={styles.placeholder}
       ></LazyZoomImage>
 
       {createCaption()}

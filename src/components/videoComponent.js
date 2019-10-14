@@ -1,17 +1,34 @@
+/**
+ * This file creates a video component that plays a video on scroll
+ * This takes in a source for the video and wheather or not the
+ * componnet plays on scroll
+ *
+ * If component is not played on scroll,
+ * then the user has access to video controls
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React, { useState } from "react"
+// Components
 import VimeoPlayer from "react-player/lib/players/Vimeo"
+// Sensors
 import VisibilitySensor from "react-visibility-sensor"
+// Styles
 import styles from "../styles/video.module.scss"
 
 const VideoComponent = ({ src, playOnScroll }) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
   return (
+    // Component detects if its visible
     <VisibilitySensor
       onChange={isVisible => {
         setIsPlaying(isVisible)
       }}
       active={playOnScroll}
+      minTopValue={250}
     >
       <div className={styles.player_wrapper}>
         <VimeoPlayer
@@ -26,7 +43,6 @@ const VideoComponent = ({ src, playOnScroll }) => {
           pip={false}
           controls={!playOnScroll}
           playerOptions={{
-            color: "558BFF", // PRIMARY COOR THEME
             responsive: true,
           }}
         />

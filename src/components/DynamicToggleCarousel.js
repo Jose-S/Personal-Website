@@ -1,14 +1,27 @@
+/**
+ * This component is a higher order component that
+ * takes in two carousels for toggleing. This uses a
+ * class component becuase it needs to bind the state,
+ * so its modifiable by its children components.
+ */
+
+// ----------- IMPORT -----------
+
+// Build
 import React, { Component } from "react"
 import ImageCarousal from "./blocks/imageCarousal"
+// Component
 import ToggleableComponent from "./ToggleableComponent"
-// import "../styles/carousel-styles.scss"
+// Styles
 import styles from "../styles/carousel.module.scss"
+
+// ----------- CODE -----------
 
 class DynamicToggleCarousel extends Component {
   constructor(props) {
     super(props)
     // Bind this to changePosition function
-    // THis allows any child components to update this parent's state
+    // This allows any child components to update this parent's state
     // by simply calling change posiiton
     this.changePosition = this.changePosition.bind(this)
   }
@@ -18,18 +31,18 @@ class DynamicToggleCarousel extends Component {
   }
 
   state = {
+    // Position of carousel slide
     currentPosition: 0,
-    rebuilds: 0,
   }
 
+  // Function that sets the slide position. It is passed to
+  // the ImageCarousel component
   changePosition(current) {
     this.setState({ currentPosition: current })
-    //  this.setState({ rebuilds: rebuilds++ })
-    console.log("Building a New Component: ")
   }
 
-  createCarousalComponent(imageControler, caption) {
-    console.log("CAROUSEL CAPTIONS", caption)
+  // Creates an Image Carousel Component
+  createCarousalComponent(imageControler, caption, currentIndex) {
     return (
       <ImageCarousal
         innerHTML={this.innerHTML}
@@ -37,7 +50,7 @@ class DynamicToggleCarousel extends Component {
         blockName={this.blockName}
         attrs={{
           controler: imageControler,
-          selected_item: this.state.currentPosition,
+          selected_item: currentIndex,
           on_change: this.changePosition,
           captions: caption,
         }}
@@ -45,12 +58,15 @@ class DynamicToggleCarousel extends Component {
     )
   }
 
+  // Creates carousel titles
   createTitles(titles) {
-    let group = []
+    let titleGroup = []
     titles.forEach((title, index) => {
-      group.push(
+      titleGroup.push(
         <h4
           key={index}
+          // Only show the title if it's index is
+          // equal to the current position
           className={`${styles.title_toggle} ${
             index === this.state.currentPosition
               ? styles.fadeIn
@@ -61,11 +77,12 @@ class DynamicToggleCarousel extends Component {
         </h4>
       )
     })
-    return group
+    return titleGroup
   }
 
+  // Creates carousel image tites
   createCaptions(captions) {
-    let group = []
+    let captionGroup = []
     // Find Largest length index
     // Used to set to relative position
     let largestI = 0
@@ -76,7 +93,7 @@ class DynamicToggleCarousel extends Component {
     })
 
     captions.forEach((caption, index) => {
-      group.push(
+      captionGroup.push(
         <p
           key={index}
           className={
@@ -93,7 +110,7 @@ class DynamicToggleCarousel extends Component {
         </p>
       )
     })
-    return group
+    return captionGroup
   }
 
   render() {
@@ -111,16 +128,22 @@ class DynamicToggleCarousel extends Component {
 
         <ToggleableComponent
           title={""}
-          mainComponent={this.createCarousalComponent(mainImages, captions)}
+          mainComponent={this.createCarousalComponent(
+            mainImages,
+            captions,
+            this.state.currentPosition
+          )}
           toggledComponent={this.createCarousalComponent(
             toggledImages,
-            captions
+            captions,
+            this.state.currentPosition
           )}
           hideTitle={hideTitle}
           sizeClass={""}
         />
         {/* DEVELOP BUG: WHEN THE SITE IS LOADED THE ABSOLUTE 
-        DIVS CONTAINING THE IMAGE'S CAPTION FLICKER (WORKS ON BUILD VERSION)*/}
+        DIVS CONTAINING THE IMAGE'S CAPTION FLICKER (WORKS ON BUILD VERSION)
+        CURRENTLY NOT AN URGENT FIX*/}
         <div className={styles.stack_wrapper}>
           {this.createCaptions(captions)}
         </div>

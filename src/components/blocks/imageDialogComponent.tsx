@@ -1,12 +1,23 @@
+/**
+ *  This File maps to lazyblock/image-dialog WP block.
+ *  An image dialog contains a lazy loaded image and caption
+ *  The image is clickable and shows a dialog for more details
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React from "react"
 import { IWPGBlock } from "react-gutenberg/"
+// Component
 import ImageDialog from "../ImageDialog"
+
+// ----------- CODE -----------
 
 const ImageDialogBlock: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
 
-  // Text to rotate animate
   const { title, caption, loading_image, display_image } = attrs as {
     title: string
     caption: string
@@ -14,6 +25,7 @@ const ImageDialogBlock: React.FC<IWPGBlock> = props => {
     display_image: string
   }
 
+  // Requires two images for lazy loading
   const imgLoading =
     props.blockName !== "lazyblock/image-dialog"
       ? loading_image
@@ -25,7 +37,8 @@ const ImageDialogBlock: React.FC<IWPGBlock> = props => {
       : JSON.parse(decodeURI(display_image))
 
   return (
-    <div style={{ width: "100%" }}>
+    // Don't want to add an extra css file for this one style attribute
+    <div className="wpg-block" style={{ width: "100%" }}>
       <ImageDialog
         src={imgDisplay.url}
         placeholderSrc={imgLoading.url}

@@ -62,3 +62,16 @@
 .icon_stroke_three {
    fill: var(--color-primary);
 }
+
+.light_icon_color {
+   fill: var(--gray-4);
+
+
+}
+
+
+svg {
+   &:hover .light_icon_color {
+      fill: var(--color-primary);
+   }
+}

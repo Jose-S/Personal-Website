@@ -1,18 +1,28 @@
+/**
+ * This file creates a lazy loaded
+ * zoom image. This type of image has a medium
+ * zoom effect
+ *
+ * The componnet takes in:
+ *   - A src of the image to lazyload
+ *   - A src to the lazyload placeholder
+ */
+
+// ----------- IMPORT -----------
+
+// Boiler
 import React, { useState } from "react"
+// Components
 import ImageZoom from "react-medium-image-zoom"
 import LazyLoad from "react-lazy-load"
 import LoadingImage from "./LoadingImage"
-// import styles from "../styles/zoom-image.module.scss"
+// Styles
 import styles from "../styles/image-dialog.module.scss"
-const LazyZoomImage = ({
-  src,
-  placeholderSrc,
-  srcClassName = "",
-  placeholderClassName = "",
-}) => {
-  const [isLoading, setIsLoading] = useState(true)
 
-  // Don't want to create a new file for just one style
+// ----------- CODE -----------
+
+const LazyZoomImage = ({ src, placeholderSrc }) => {
+  const [isLoading, setIsLoading] = useState(true)
 
   // Lazy loads an image zoom component
   return (
@@ -23,6 +33,7 @@ const LazyZoomImage = ({
         positionClass={styles.inner_loading_image}
       ></LoadingImage>
 
+      {/* Lazyload zoom image */}
       <LazyLoad
         offsetVertical={500}
         width="100%"
@@ -37,38 +48,6 @@ const LazyZoomImage = ({
         />
       </LazyLoad>
     </div>
-    // <div style={{ display: "grid" }}>
-    //   <LoadingImage
-    //     src={placeholderSrc}
-    //     srcClassName={isLoading ? styles.fadeIn : styles.fadeOut}
-    //     positionClass={styles.image_stacker__top}
-    //   ></LoadingImage>
-    //   <LazyLoad
-    //     offsetVertical={500}
-    //     height="100%"
-    //     onContentVisible={() => setIsLoading(false)}
-    //     className={styles.image_stacker__bottom}
-    //   >
-    //     <ImageZoom
-    //       image={{
-    //         src: src,
-    //         className: srcClassName,
-    //       }}
-    //     />
-    //   </LazyLoad>
-    // </div>
   )
 }
-
-/* <LazyLoadImage
-        height={"300px"}
-        width={"300px"}
-        effect="blur"
-        src={imgDisplay.url}
-        placeholderSrc={imgLoading.url}
-        wrapperClassName={styles.cover}
-        afterLoad={() => console.log("AFTER")}
-        beforeLoad={() => console.log("BEFORE")}
-      /> */
-
 export default LazyZoomImage

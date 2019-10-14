@@ -1,5 +1,38 @@
+@import "./Global/colors.scss";
+@import "./Global/spacing.scss";
+
 .site_info_wrapper {
    flex-grow: 1;
+}
+
+.site_link {
+   text-decoration: none;
+
+   // Unvisited link
+   &:link {
+      color: var(--color-primary)
+   }
+
+   // Visited link
+   &:visited {
+      color: var(--color-primary)
+   }
+
+   //  Mouse Over Link
+   &:hover {
+      color: var(--color-secondary)
+   }
+
+   // Selected link
+   &:active {
+      color: var(--gray-6);
+   }
+}
+
+// Style For Title Link
+.site_name {
+   @extend .site_link;
+   // flex-grow: 1;
    margin: auto 0;
    font-family: var(--font-secondary);
    font-weight: 500;
@@ -7,6 +40,19 @@
    line-height: 160%;
    letter-spacing: 0.25px;
    text-transform: uppercase;
+
+   &:link {
+      color: #000
+   }
+
+   // Visited link
+   &:visited {
+      color: #000
+   }
+
+   &:hover {
+      color: var(--gray-6)
+   }
 }
 
 .main_menu_wrapper {
@@ -38,4 +84,35 @@
 .menu_item:hover {
    /* font-weight: bold; */
    color: #558BFF;
+}
+
+.footer_contact {
+   font-weight: 600;
+   color: var(--gray-5);
+   margin: 0px;
+}
+
+.footer_wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-content: center;
+}
+
+.footer_top_inner_wrapper {
+   display: flex;
+   justify-content: space-between;
+}
+
+.footer_icon_inner_wrapper a {
+   margin-left: var(--space-sm);
+}
+
+.footer_bottom_inner_wrapper {
+   @include margin-top--xl;
+   text-align: center;
+}
+
+footer {
+   margin-bottom: 0;
 }
