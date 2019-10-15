@@ -8,6 +8,9 @@
  * The componnet takes in:
  *   - A src either an object with a url or a string url
  *   - The size of the icon in "00px" format
+ *
+ * SOME SVGS ARE LOADED THROUGH A LOCAL FILE BEACUASE OF CROSS ORIGIN
+ * ISSUES WITH SVG FILES ACROSS TH INTERNET (FIx Later, current temporary solution)
  */
 
 // ----------- IMPORT -----------
@@ -26,13 +29,14 @@ const Icon = ({ src, size = "" }) => {
   console.log("ICON URL PRE", src, typeof src)
 
   const { title, url } = src
+  const strURL = `../../${src}`
   // Type chck if its an object
   console.log("ICON URL", url)
   // Create an SVG React Component
   return (
     <ReactSVG
       title={title}
-      src={typeof src === `string` ? src : url}
+      src={typeof src === `string` ? strURL : url}
       fallback={() => (
         <img
           src={IconPlaceholder}

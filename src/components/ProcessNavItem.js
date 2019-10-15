@@ -19,7 +19,7 @@ const ProcessNavItem = ({ name, icon }) => {
   return (
     <Link to={name} smooth={true} className={styles.nav_item_wrapper}>
       <div className={styles.nav_item_box}>
-        <Icon src={icon.source_url} size={"64px"} />
+        <Icon src={icon.filename} size={"64px"} />
         <p
           className={`${styles.nav_item_label}, text--xs-body-two`}
           style={{ margin: "0px" }}

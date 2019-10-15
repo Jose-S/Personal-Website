@@ -24,11 +24,11 @@ HOW IT WORKS: All pages have a layout componnet wrapper. THe layout componnet
   /* type scale */
   /* NOTE VALUES ARE FOR LATOP SCREEN ~1200px*/
   /* 10 px */
-  --text-xxxs: calc(1em / (var(--text-scale-ratio) * 1.66));
+  --text-xxxs: calc(1em / var(--text-scale-ratio) / 1.66);
   /* 12 px */
-  --text-xxs: calc(1em / (var(--text-scale-ratio) * 1.4));
+  --text-xxs: calc(1em / var(--text-scale-ratio) / 1.4);
   /* 14 px */
-  --text-xs: calc(1em / (var(--text-scale-ratio) * var(--text-scale-ratio)));
+  --text-xs: calc(1em / var(--text-scale-ratio) / var(--text-scale-ratio));
   /* 16 px */
   --text-sm: calc(1em / var(--text-scale-ratio));
   /* 24 px */

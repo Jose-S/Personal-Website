@@ -49,8 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
               process {
                 name
                 image {
-                  source_url
-                  alt_text
+                  filename
                 }
               }
             }

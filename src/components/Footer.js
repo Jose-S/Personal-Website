@@ -34,7 +34,7 @@ const Footer = () => (
                   name
                   link
                   icon {
-                    source_url
+                    filename
                   }
                 }
               }
@@ -104,7 +104,7 @@ function createSocialIcons(socialIcons) {
     icons.push(
       <SocialIcon
         key={index}
-        src={socialIcon.icon.source_url}
+        src={socialIcon.icon.filename}
         name={socialIcon.name}
         profileUrl={socialIcon.link}
       />
