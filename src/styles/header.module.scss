@@ -1,5 +1,6 @@
 @import "./Global/colors.scss";
 @import "./Global/spacing.scss";
+@import "./Global/media-queries.scss";
 
 .site_info_wrapper {
    flex-grow: 1;
@@ -83,7 +84,11 @@
 
 .menu_item:hover {
    /* font-weight: bold; */
-   color: #558BFF;
+   color: var(--color-primary)
+}
+
+.menu_item_selected {
+   color: var(--color-primary)
 }
 
 .footer_contact {
@@ -115,4 +120,16 @@
 
 footer {
    margin-bottom: 0;
+}
+
+
+@include breakpoint(sm) {
+   .site_name {
+      padding: var(--space-unit);
+      font-weight: 500;
+      font-size: calc(1em * var(--text-scale-ratio) * 1.75);
+      line-height: 160%;
+      letter-spacing: 0.25px;
+      text-transform: uppercase;
+   }
 }

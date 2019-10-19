@@ -1,7 +1,7 @@
 @import "./Global/grid_layouts.scss";
 @import "./Global/spacing.scss";
 @import "./Global/colors.scss";
-
+@import "./Global/media-queries.scss";
 
 .wrapper_col {
    @include margin-top--sm;
@@ -33,4 +33,13 @@
 .grid {
    @include grid;
    @include gridAuto(260px);
+}
+
+// MEDIA QUERIES
+
+@include breakpoint(sm) {
+
+   .wrapper_icon {
+      @include invisible;
+   }
 }

@@ -48,12 +48,10 @@ const IndexPage = () => (
               block={props.allWordpressPage.edges[0].node.blocks[0]}
               mapToBlock={GetCustomBlock}
             />
-            &nbsp;
             <WPGBlock
               block={props.allWordpressPage.edges[0].node.blocks[2]}
               mapToBlock={GetCustomBlock}
             />
-            &nbsp;
             <WPGBlock
               block={props.allWordpressPage.edges[0].node.blocks[4]}
               mapToBlock={GetCustomBlock}

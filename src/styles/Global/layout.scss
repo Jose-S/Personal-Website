@@ -6,6 +6,7 @@ HOW IT WORKS: All pages have a layout componnet wrapper. THe layout componnet
 @import url('https://rsms.me/inter/inter.css');
 @import "./spacing.scss";
 @import "./colors.scss";
+@import "./media-queries.scss";
 
 :root {
 
@@ -44,10 +45,47 @@ HOW IT WORKS: All pages have a layout componnet wrapper. THe layout componnet
 
   /* line-height */
   --body-line-height: 1.8;
-
   /* Set Theme Colors */
 
 }
+
+
+@include breakpoint(md) {
+  :root {
+    --text-base-size: 1em;
+    --text-scale-ratio: 1.25;
+  }
+
+  // FOR TESTING
+  // html {
+  //   background: lightcoral;
+  // }
+}
+
+@include breakpoint(sm) {
+  :root {
+    --text-base-size: 1em;
+    --text-scale-ratio: 1.25;
+  }
+
+  // FOR TESTING
+  // html {
+  //   background: lightblue;
+  // }
+}
+
+// @media screen and (min-device-width : 320px) and (max-device-width : 480px) {
+//   html {
+//     background: blue;
+//   }
+// }
+
+
+// @media screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+//   html {
+//     background: red;
+//   }
+// }
 
 html {
   -ms-text-size-adjust: 100%;

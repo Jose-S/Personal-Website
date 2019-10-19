@@ -1,6 +1,7 @@
 @import "./Global/grid_layouts.scss";
 @import "./Global/spacing.scss";
 @import "./Global/colors.scss";
+@import "./Global/media-queries.scss";
 
 .nav_item_icon {
   width: var(--space-xxl);
@@ -36,11 +37,22 @@
   width: 100%; // justify-content: space-between;
 }
 
-.nav_animate {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  right: 0;
-  position: sticky;
-  // justify-content: space-between;
+
+@include breakpoint(sm) {
+  .nav_item_bar_wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav_item_box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav_item_wrapper {
+    flex: auto;
+    width: 50%;
+  }
+
 }

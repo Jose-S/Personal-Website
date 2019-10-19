@@ -1,6 +1,7 @@
 @import "./Global/grid_layouts.scss";
 @import "./Global/spacing.scss";
 @import "./Global/colors.scss";
+@import "./Global/media-queries.scss";
 
 .split_container {
    @include grid;
@@ -38,4 +39,19 @@
 
 .overview_title_period {
    color: var(--color-secondary);
+}
+
+@include breakpoint(sm) {
+   .split_container {
+      // all: initial;
+      display: flex;
+      flex-direction: column-reverse;
+   }
+
+   .overview_img {
+      position: relative;
+      right: 0%;
+      width: 100%;
+      height: auto;
+   }
 }

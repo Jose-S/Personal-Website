@@ -1,5 +1,6 @@
 @import "./Global/spacing.scss";
 @import "./Global/colors.scss";
+@import "./Global/media-queries.scss";
 
 .image_wrapper {
    width: 100%;
@@ -169,4 +170,14 @@
 .test {
    display: inline-block;
 
+}
+
+@include breakpoint(sm) {
+   .modal_wrapper {
+      width: 100%;
+   }
+
+   .modal_image_wrapper {
+      max-width: 100%;
+   }
 }

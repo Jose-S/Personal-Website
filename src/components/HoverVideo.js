@@ -21,6 +21,7 @@ import LoadingImage from "./LoadingImage"
 // Styles
 import stylesVid from "../styles/video.module.scss"
 import styles from "../styles/image-dialog.module.scss"
+import { useIsMobile } from "./Responsive"
 
 // ----------- CODE -----------
 
@@ -35,6 +36,7 @@ const HoverVideo = ({
   const [openDialog, setOpenDialog] = useState(false)
   const [isHovered, setIsHover] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  var isMobile = useIsMobile()
 
   var toggleHover = () => {
     setIsHover(!isHovered)
@@ -118,7 +120,7 @@ const HoverVideo = ({
             <h4 className={styles.modal_title}>{title}</h4>
             <div
               className={styles.modal_image_wrapper}
-              style={{ width: "80%" }}
+              style={{ width: "100%" }}
             >
               {createVideo(src, true)}
             </div>

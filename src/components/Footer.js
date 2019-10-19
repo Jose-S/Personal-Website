@@ -13,44 +13,48 @@ import { StaticQuery, graphql, Link } from "gatsby"
 import SocialIcon from "./SocialIcon"
 // Styles
 import styles from "../styles/header.module.scss"
+import { useIsMobile } from "./Responsive"
 
 // ----------- CODE -----------
 
-const Footer = () => (
+const Footer = () => {
+  var isMobile = useIsMobile()
   // Fetch Menu Items
-  <StaticQuery
-    query={graphql`
-      {
-        allWordpressPage(filter: { title: { eq: "Work" } }) {
-          edges {
-            node {
-              acf {
-                contact_description
-                signature
-                contact_email
-                email_subject
-                email_body
-                social_media {
-                  name
-                  link
-                  icon {
-                    filename
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          allWordpressPage(filter: { title: { eq: "Work" } }) {
+            edges {
+              node {
+                acf {
+                  contact_description
+                  signature
+                  contact_email
+                  email_subject
+                  email_body
+                  social_media {
+                    name
+                    link
+                    icon {
+                      filename
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
-    `}
-    render={props => (
-      <footer className={styles.footer_wrapper}>
-        {createContact(props.allWordpressPage.edges[0].node.acf)}
-        {createSignature(props.allWordpressPage.edges[0].node.acf)}
-      </footer>
-    )}
-  />
-)
+      `}
+      render={props => (
+        <footer className={styles.footer_wrapper}>
+          {createContact(props.allWordpressPage.edges[0].node.acf, isMobile)}
+          {createSignature(props.allWordpressPage.edges[0].node.acf)}
+        </footer>
+      )}
+    />
+  )
+}
 
 // Create Bottom Copyrigth signature
 function createSignature(data) {
@@ -70,12 +74,16 @@ function createSignature(data) {
 }
 
 // Create Cotact info footer section
-function createContact(data) {
+function createContact(data, isMobile) {
   console.log("FOOTER", data.social_media[0].icon.source_url)
   return (
     <div className={styles.footer_top_inner_wrapper}>
       <div>
-        <p className={`text--xs-body-two ${styles.footer_contact}`}>
+        <p
+          className={`${isMobile ? "" : "text--xs-body-two"} ${
+            styles.footer_contact
+          }`}
+        >
           {data.contact_description}
           <br />
           <span>
@@ -90,9 +98,13 @@ function createContact(data) {
         </p>
       </div>
       {/* Add Social Media Icon Links */}
-      <div className={styles.footer_icon_inner_wrapper}>
-        {createSocialIcons(data.social_media)}
-      </div>
+      {!isMobile ? (
+        <div className={styles.footer_icon_inner_wrapper}>
+          {createSocialIcons(data.social_media)}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

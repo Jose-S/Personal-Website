@@ -1,0 +1,124 @@
+@import "./Global/colors.scss";
+@import "./Global/spacing.scss";
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+   position: fixed;
+   width: 36px;
+   height: 30px;
+   right: 36px;
+   top: 36px;
+   z-index: 99;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+   background: var(--black);
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+   background: var(--color-primary);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+   height: 24px;
+   width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+   background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+   top: 0px;
+   position: fixed;
+   height: 100%;
+   overflow-y: hidden;
+}
+
+/* General sidebar styles */
+.bm-menu {
+   background: var(--gray-1);
+   padding-top: 35%;
+   font-size: 1.15em;
+   overflow-y: hidden !important;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+   fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+   color: #b8b7ad;
+   padding: 0.8em 0em;
+   overflow-y: hidden;
+   display: flex;
+   flex-direction: column;
+}
+
+/* Individual item */
+.bm-item {
+   display: inline-block;
+   text-decoration: none;
+   padding: var(--space-unit) 0.4em;
+
+   // Unvisited link
+   &:link {
+      color: var(--color-primary);
+      margin-bottom: 0;
+   }
+
+   // Visited link
+   &:visited {
+      color: var(--color-primary);
+   }
+
+   //  Mouse Over Link
+   &:hover {
+      background: var(--color-primary);
+      color: var(--gray-1);
+   }
+
+   // Selected link
+   &:active {
+      background: var(--color-primary);
+      color: var(--gray-1);
+   }
+}
+
+.bm-item-active {
+   background: var(--color-primary);
+   color: var(--gray-1);
+
+   &:visited {
+      // Had to ovveride other hover states
+      color: var(--gray-1);
+   }
+}
+
+/* Styling of overlay */
+.bm-overlay {
+   top: 0px;
+   left: 0px;
+   background: rgba(0, 0, 0, 0.3);
+}
+
+.not-interactive {
+   @include margin-bottom--md;
+   pointer-events: none;
+   background: var(--gray-1);
+   bottom: 0px;
+
+   &:hover {
+      background: var(--gray-1);
+   }
+}

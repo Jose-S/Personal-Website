@@ -28,7 +28,7 @@ const SocialIcon = ({ src, name = "", profileUrl = "", size = "24px" }) => {
       delay={[250, 0]}
       distance={16}
     >
-      <a href={profileUrl}>
+      <a href={profileUrl} style={{ pointerEvents: "all" }}>
         <Icon src={src} size={size}></Icon>
       </a>
     </Tippy>

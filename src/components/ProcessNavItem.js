@@ -12,17 +12,23 @@ import { Link } from "react-scroll"
 import Icon from "./IconSvg"
 // Styles
 import styles from "../styles/process-nav-bar.module.scss"
+import { useIsMobile } from "./Responsive"
 
 // ------ CODE ------
 
 const ProcessNavItem = ({ name, icon }) => {
+  // For Responsive desisgn
+  var isMobile = useIsMobile()
+
   return (
     <Link to={name} smooth={true} className={styles.nav_item_wrapper}>
       <div className={styles.nav_item_box}>
-        <Icon src={icon.filename} size={"64px"} />
+        <Icon src={icon.filename} size={isMobile ? "32px" : "64px"} />
         <p
-          className={`${styles.nav_item_label}, text--xs-body-two`}
-          style={{ margin: "0px" }}
+          className={`${styles.nav_item_label}, ${
+            isMobile ? "" : "text--xs-body-two"
+          }`}
+          style={{ margin: "0px", marginLeft: isMobile ? "16px" : "0px" }}
         >
           {name}
         </p>
