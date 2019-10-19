@@ -11,7 +11,7 @@ import React, { useState } from "react"
 // Components
 import { StaticQuery, graphql, Link } from "gatsby"
 import SiteInfo from "./SiteInfo"
-import Menu from "react-burger-menu/lib/menus/stack"
+import Menu from "react-burger-menu/lib/menus/slide"
 import { Location } from "@reach/router"
 // Styles
 import styles from "../styles/header.module.scss"
