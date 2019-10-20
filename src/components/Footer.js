@@ -17,7 +17,7 @@ import { useIsMobile } from "./Responsive"
 
 // ----------- CODE -----------
 
-const Footer = () => {
+const Footer = (isHome = false) => {
   var isMobile = useIsMobile()
   // Fetch Menu Items
   return (
@@ -47,7 +47,10 @@ const Footer = () => {
         }
       `}
       render={props => (
-        <footer className={styles.footer_wrapper}>
+        <footer
+          className={styles.footer_wrapper}
+          style={isHome ? { margin: "16px 0px" } : {}}
+        >
           {createContact(props.allWordpressPage.edges[0].node.acf, isMobile)}
           {createSignature(props.allWordpressPage.edges[0].node.acf)}
         </footer>

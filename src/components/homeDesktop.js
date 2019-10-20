@@ -1,10 +1,7 @@
 /**
- * This page creates the home page
- * TODO: MAJOR REFACTORING AND LAYOUT CHANGES
- * WILL INCORPORATE ANIMATION
- *
- * FOR ANIMATION TO WORK: Styles must override everything else. This
- * is why im using in-line styles (easiest solution)
+ * This page creates the home page for desktop
+ * Animated with a paralex scroll fro both items and heading
+ * THe heading is fixed
  */
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
@@ -16,33 +13,38 @@ import Layout from "../components/layout"
 import { WPGBlock } from "react-gutenberg"
 import GetCustomBlock from "../components/blocks"
 import styles from "../styles/large-title.module.scss"
+import stylesDesktop from "../styles/home-desktop.module.scss"
 import ProjectItems from "../components/ProjectItems"
-import { useIsDesktop } from "../components/Responsive"
-import HomeIndexPage from "../components/homeDesktop"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
+import Footer from "../components/Footer"
 
-const IndexPage = () => {
-  var isDesktop = useIsDesktop()
+const HomeIndexPage = () => {
   const { scrollYProgress } = useViewportScroll()
-  const scale = useTransform(scrollYProgress, [0, 0.7], [1.2, 0.85])
-  const y = useTransform(scrollYProgress, [0, 0.5], ["0vh", "-50vh"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const val = useTransform(scrollYProgress, [0, 1], [0, 1])
+  const scale = useTransform(scrollYProgress, [0, 0.7], [1.25, 1])
+  const y = useTransform(scrollYProgress, [0, 0.7], ["0vh", "-16vh"])
+  const y2 = useTransform(scrollYProgress, [0, 0.7], ["0vh", "-42vh"])
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [0.25, 1])
 
   // FOR DEBUGING
-  // const getVal = () => {
-  //   console.log("Y PROGRESS ", scrollYProgress.get())
-  //   console.log("TEXT SCALE ", scale.get())
-  //   console.log("TEXT Y ", y.get())
-  // }
+  //   const getVal = () => {
+  //     console.log("Y PROGRESS ", scrollYProgress.get())
+  //     console.log("TEXT SCALE ", scale.get())
+  //     console.log("TEXT Y ", y.get())
+  //     console.log("CARDS Y ", y2.get())
+  //   }
 
-  // getVal()
+  //   getVal()
 
-  if (isDesktop) {
-    return <HomeIndexPage />
-  } else {
-    return (
-      <Layout>
+  return (
+    <Layout isHome={true}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "135vh",
+          justifyContent: "flex-end",
+        }}
+      >
         <StaticQuery
           query={graphql`
             {
@@ -69,18 +71,18 @@ const IndexPage = () => {
           `}
           render={props => (
             <div
-              className={styles.center}
+              className={`${styles.center} `}
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "75vh",
+                height: "100vh",
               }}
             >
               <motion.h3
-                // onClick={() => getVal()}
                 className={styles.largeWorkTitle}
-                style={{ opacity, scale, y, position: "fixed" }}
+                style={{ scale, y, position: "fixed" }}
+                //  onClick={() => getVal()}
               >
                 <WPGBlock
                   block={props.allWordpressPage.edges[0].node.blocks[0]}
@@ -98,13 +100,24 @@ const IndexPage = () => {
             </div>
           )}
         />
-        <motion.h3 style={{ opacity: scrollYProgress * 2, color: "#000" }}>
-          Work
-        </motion.h3>
-        <ProjectItems />
-      </Layout>
-    )
-  }
+        <div style={{ height: "35vh" }}>
+          <motion.div
+            style={{
+              opacity,
+              translateY: y2,
+              position: "fixed",
+              width: "960px",
+            }}
+          >
+            <ProjectItems />
+            <motion.div>
+              <Footer isHome={true} />
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </Layout>
+  )
 }
 
-export default IndexPage
+export default HomeIndexPage

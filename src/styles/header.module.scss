@@ -122,6 +122,11 @@ footer {
    margin-bottom: 0;
 }
 
+.header_fixed {
+   position: fixed;
+   left: 50%;
+   transform: translateX(-50%);
+}
 
 @include breakpoint(sm) {
    .site_name {

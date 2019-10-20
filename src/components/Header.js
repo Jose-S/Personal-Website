@@ -17,12 +17,13 @@ import { Location } from "@reach/router"
 import styles from "../styles/header.module.scss"
 import "../styles/sidemenu.scss"
 import "../styles/hamburger.scss"
-import { useIsMobile } from "./Responsive"
+import { useIsMobile, useIsDesktop } from "./Responsive"
 import SocialIcon from "./SocialIcon"
 
 const Header = () => {
   const [showHam, setShowHam] = useState(false)
   var isMobile = useIsMobile()
+  var isDesktop = useIsDesktop()
 
   // Creates the Hamburger Menu
   const hamMenu = () => {
@@ -45,7 +46,7 @@ const Header = () => {
   /// THis is used to highlight it (Currently not used)
   const toggleMenu = (isOpen, scene = "") => {
     setShowHam(isOpen)
-    document.body.style.overflowY = isOpen ? "hidden" : ""
+    document.body.style.overflowY = isOpen ? "hidden" : "visible"
   }
 
   // Create Mobile menu
@@ -152,29 +153,35 @@ const Header = () => {
         }
       `}
       render={props => (
-        <header className={styles.main_menu_wrapper}>
-          <div className={styles.main_menu_inner}>
-            <SiteInfo />
+        <Location>
+          {({ location }) => {
+            let path = location.pathname
+            return (
+              <header
+                className={`${styles.main_menu_wrapper} ${
+                  path === "/" && isDesktop ? styles.header_fixed : ""
+                }`}
+              >
+                <div className={styles.main_menu_inner}>
+                  <SiteInfo />
 
-            <Location>
-              {({ location }) => {
-                let path = location.pathname
-                if (isMobile) {
-                  return createMobileMenu(
-                    props.allWordpressWpApiMenusMenusItems.edges[0].node.items,
-                    path,
-                    props
-                  )
-                } else {
-                  return createMenu(
-                    props.allWordpressWpApiMenusMenusItems.edges[0].node.items,
-                    path
-                  )
-                }
-              }}
-            </Location>
-          </div>
-        </header>
+                  {isMobile
+                    ? createMobileMenu(
+                        props.allWordpressWpApiMenusMenusItems.edges[0].node
+                          .items,
+                        path,
+                        props
+                      )
+                    : createMenu(
+                        props.allWordpressWpApiMenusMenusItems.edges[0].node
+                          .items,
+                        path
+                      )}
+                </div>
+              </header>
+            )
+          }}
+        </Location>
       )}
     />
   )

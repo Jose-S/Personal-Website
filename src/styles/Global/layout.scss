@@ -230,3 +230,21 @@ ol {
   padding-left: var(--space-lg);
   margin: 0px;
 }
+
+@keyframes opacityLoad {
+  0% {
+
+    opacity: 0;
+  }
+
+  100% {
+
+    opacity: 1;
+  }
+}
+
+.main {
+  /* This section calls the opacityLoad animation we defined above */
+  animation: 1.25s linear 0s 1 opacityLoad;
+
+}

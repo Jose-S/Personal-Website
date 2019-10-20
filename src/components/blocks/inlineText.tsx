@@ -23,12 +23,16 @@ const InlineText: React.FC<IWPGBlock> = props => {
   // Only if not mobile
   if (inline_text.includes("who") && !isMobile) {
     let endIndex = inline_text.indexOf("who") + 3
+    let endIndexA = inline_text.indexOf(" a") + 2
+
     return (
       <span>
         &nbsp;
         {inline_text.substring(0, endIndex)}
         <br />
-        {inline_text.substring(endIndex)}
+        {inline_text.substring(endIndex, endIndexA)}
+        <br />
+        {inline_text.substring(endIndexA)}
       </span>
     )
   }

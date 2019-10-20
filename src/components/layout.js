@@ -16,9 +16,9 @@ import "../styles/Global/layout.scss"
 
 // ----------- CODE -----------
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isHome = false }) => {
   return (
-    <>
+    <div className="main">
       <Header />
       <div
         style={{
@@ -29,9 +29,9 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <Footer />
+        {isHome ? <></> : <Footer />}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -14,8 +14,8 @@ import window from "global"
 
 const REFRESH_RATE = Math.round(1000 / 3)
 const MOBILE_SIZE = 480
-const TABLET_SIZE = 1024
-const DESKTOP_SIZE = 1220
+const TABLET_SIZE = 1023
+const DESKTOP_SIZE = 1024
 
 /**
  *
@@ -47,7 +47,7 @@ export function useWindowWidth(screenRes) {
 function isScreenSize(screenRes) {
   if (screenRes === DESKTOP_SIZE) {
     // Use Min instead of Max
-    return window.innerWidth > screenRes
+    return window.innerWidth >= screenRes
   } else {
     return window.innerWidth < screenRes
   }
@@ -59,10 +59,10 @@ export const useIsMobile = () => {
   return useWindowWidth(MOBILE_SIZE)
 }
 
-function useIsTablet() {
+export const useIsTablet = () => {
   return useWindowWidth(TABLET_SIZE)
 }
-function useIsDesktop() {
+export const useIsDesktop = () => {
   return useWindowWidth(DESKTOP_SIZE)
 }
 
