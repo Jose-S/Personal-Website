@@ -17,6 +17,8 @@ import stylesDesktop from "../styles/home-desktop.module.scss"
 import ProjectItems from "../components/ProjectItems"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
 import Footer from "../components/Footer"
+import { useIsDesktop } from "./Responsive"
+import HomeIndexPageMobile from "./homeMobile"
 
 const HomeIndexPage = () => {
   const { scrollYProgress } = useViewportScroll()
@@ -24,6 +26,7 @@ const HomeIndexPage = () => {
   const y = useTransform(scrollYProgress, [0, 0.7], ["0vh", "-16vh"])
   const y2 = useTransform(scrollYProgress, [0, 0.7], ["0vh", "-42vh"])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [0.25, 1])
+  var isDesktop = useIsDesktop()
 
   // FOR DEBUGING
   //   const getVal = () => {
@@ -35,7 +38,7 @@ const HomeIndexPage = () => {
 
   //   getVal()
 
-  return (
+  return isDesktop ? (
     <Layout isHome={true}>
       <div
         style={{
@@ -117,6 +120,8 @@ const HomeIndexPage = () => {
         </div>
       </div>
     </Layout>
+  ) : (
+    <></>
   )
 }
 

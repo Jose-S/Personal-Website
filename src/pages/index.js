@@ -20,29 +20,47 @@ import ProjectItems from "../components/ProjectItems"
 import { useIsDesktop } from "../components/Responsive"
 import HomeIndexPage from "../components/homeDesktop"
 import { motion, useViewportScroll, useTransform } from "framer-motion"
+import HomeIndexPageMobile from "../components/homeMobile"
+import Footer from "../components/Footer"
 
 const IndexPage = () => {
-  var isDesktop = useIsDesktop()
   const { scrollYProgress } = useViewportScroll()
-  const scale = useTransform(scrollYProgress, [0, 0.7], [1.2, 0.85])
-  const y = useTransform(scrollYProgress, [0, 0.5], ["0vh", "-50vh"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const val = useTransform(scrollYProgress, [0, 1], [0, 1])
+  var isDesktop = useIsDesktop()
+
+  const scrollIn = isDesktop ? [0, 0.7] : [0, 0.6]
+  const scaleOut = isDesktop ? [1.25, 1] : [1.2, 0.85]
+  const opacityOut = isDesktop ? [0.25, 1] : [1, 0]
+  const yOut = isDesktop ? ["0vh", "-16vh"] : ["0vh", "-45vh"]
+
+  const scale = useTransform(scrollYProgress, [0, 0.7], scaleOut)
+  const y = useTransform(scrollYProgress, [0, 0.7], yOut)
+  const y2 = useTransform(scrollYProgress, scrollIn, ["0vh", "-42vh"])
+  const opacity = useTransform(scrollYProgress, scrollIn, opacityOut)
 
   // FOR DEBUGING
-  // const getVal = () => {
-  //   console.log("Y PROGRESS ", scrollYProgress.get())
-  //   console.log("TEXT SCALE ", scale.get())
-  //   console.log("TEXT Y ", y.get())
-  // }
+  //   const getVal = () => {
+  //     console.log("Y PROGRESS ", scrollYProgress.get())
+  //     console.log("TEXT SCALE ", scale.get())
+  //     console.log("TEXT Y ", y.get())
+  //     console.log("CARDS Y ", y2.get())
+  //   }
 
-  // getVal()
+  //   getVal()
 
-  if (isDesktop) {
-    return <HomeIndexPage />
-  } else {
-    return (
-      <Layout>
+  return (
+    <Layout isHome={true}>
+      <div
+        style={
+          isDesktop
+            ? {
+                display: "flex",
+                flexDirection: "column",
+                height: "135vh",
+                justifyContent: "flex-end",
+              }
+            : {}
+        }
+      >
         <StaticQuery
           query={graphql`
             {
@@ -69,18 +87,22 @@ const IndexPage = () => {
           `}
           render={props => (
             <div
-              className={styles.center}
+              className={`${styles.center} `}
               style={{
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: "75vh",
+                height: isDesktop ? "100vh" : "75vh",
               }}
             >
               <motion.h3
-                // onClick={() => getVal()}
                 className={styles.largeWorkTitle}
-                style={{ opacity, scale, y, position: "fixed" }}
+                style={
+                  isDesktop
+                    ? { scale, y, position: "fixed" }
+                    : { opacity, scale, y, position: "fixed" }
+                }
+                //  onClick={() => getVal()}
               >
                 <WPGBlock
                   block={props.allWordpressPage.edges[0].node.blocks[0]}
@@ -98,13 +120,34 @@ const IndexPage = () => {
             </div>
           )}
         />
-        <motion.h3 style={{ opacity: scrollYProgress * 2, color: "#000" }}>
-          Work
-        </motion.h3>
-        <ProjectItems />
-      </Layout>
-    )
-  }
+
+        {isDesktop ? (
+          <div style={{ height: "35vh" }}>
+            <motion.div
+              style={{
+                opacity,
+                translateY: y2,
+                position: "fixed",
+                width: "960px",
+              }}
+            >
+              <ProjectItems />
+              <motion.div>
+                <Footer isHome={true} />
+              </motion.div>
+            </motion.div>
+          </div>
+        ) : (
+          <>
+            <motion.h3 style={{ opacity: scrollYProgress, color: "#000" }}>
+              Work
+            </motion.h3>
+            <ProjectItems />
+          </>
+        )}
+      </div>
+    </Layout>
+  )
 }
 
 export default IndexPage
