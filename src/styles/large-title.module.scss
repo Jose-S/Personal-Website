@@ -40,6 +40,12 @@
    transform-origin: bottom left;
 }
 
+.top_h3_animation_mobile {
+   transition: all 1s linear;
+   transform-origin: bottom left;
+   transform: translate3d(0, 55vh, 0) scale(0.85);
+}
+
 .center {
    text-align: center;
 }
@@ -67,5 +73,11 @@
 
    .center {
       text-align: left;
+   }
+
+   .top_h3_animation {
+      transition: all 1s linear;
+      transform-origin: bottom left;
+      transform: translate3d(0, 0vh, 0) scale(1);
    }
 }

@@ -25,6 +25,7 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 
 import { Stickyroll } from "@stickyroll/stickyroll"
+import { useIsMobile } from "../components/Responsive"
 
 function mapRange(val, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (val - low1)) / (high1 - low1)
@@ -36,6 +37,7 @@ const PlayPage = () => {
   const bottomH3Delay = 0
   // Oppasity detal for h3 bottom
   const bH3ODelay = 0.75
+  const isMobile = useIsMobile()
 
   return (
     <Layout>
@@ -84,20 +86,34 @@ const PlayPage = () => {
                     <div className={styles.play_wrapper}>
                       {/* TOP H3  : Apply scale and tranform aniamtions*/}
                       <div
-                        className={styles.top_h3_animation}
-                        style={{
-                          marginTop: "20vh",
+                        className={`${
+                          !isMobile || progress < 1
+                            ? styles.top_h3_animation
+                            : ""
+                        } ${
+                          isMobile && progress >= 1
+                            ? styles.top_h3_animation_mobile
+                            : ""
+                        }`}
+                        style={
+                          isMobile
+                            ? {
+                                marginTop: "20vh",
+                              }
+                            : {
+                                marginTop: "20vh",
 
-                          transform: `translate3d(0, calc(55vh * ${
-                            progress >= bH3ODelay + 0.1
-                              ? mapRange(progress, 0.86, 1, 0.1, 1)
-                              : 0
-                          }),0) scale(${
-                            progress >= bH3ODelay + 0.1
-                              ? mapRange(progress, 0.86, 1, 1, 0.85)
-                              : 1
-                          })`,
-                        }}
+                                transform: `translate3d(0, calc(55vh * ${
+                                  progress >= bH3ODelay + 0.1
+                                    ? mapRange(progress, 0.86, 1, 0.1, 1)
+                                    : 0
+                                }),0) scale(${
+                                  progress >= bH3ODelay + 0.1
+                                    ? mapRange(progress, 0.86, 1, 1, 0.85)
+                                    : 1
+                                })`,
+                              }
+                        }
                       >
                         <h3 className={styles.largeWorkTitlePlay}>
                           <WPGBlock
