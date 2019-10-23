@@ -15,15 +15,9 @@ import Layout from "../components/layout"
 // import WPGBlocks from "react-gutenberg"
 import { WPGBlock } from "react-gutenberg"
 import GetCustomBlock from "../components/blocks"
-import styles from "../styles/large-title.module.scss"
 import ProjectItems from "../components/ProjectItems"
-import {
-  useIsDesktop,
-  useIsMobile,
-  useIsTablet,
-} from "../components/Responsive"
+import { useIsTablet } from "../components/Responsive"
 import HomeIndexPage from "../components/homeDesktop"
-import { motion, useViewportScroll, useTransform } from "framer-motion"
 import HomeIndexPageMobile from "../components/homeMobile"
 import window from "global"
 

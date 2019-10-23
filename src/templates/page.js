@@ -10,9 +10,8 @@ import React from "react"
 import Layout from "../components/layout"
 
 // ---------------- CODE ----------------------
+export default ({ pageContext }) => <Layout>{getPage(pageContext)}</Layout>
 
-export default ({ pageContext }) => (
-  <Layout>
-    <h2>{`${pageContext.title} Under Construction 🚧`}</h2>
-  </Layout>
-)
+function getPage(pageContext) {
+  return <h2>{`${pageContext.title} Under Construction 🚧`}</h2>
+}

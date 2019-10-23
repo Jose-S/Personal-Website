@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@loadable/component": "^5.10.3",
+    "@stickyroll/stickyroll": "^1.1.6",
     "@tippy.js/react": "^2.2.3",
     "@types/loadable__component": "^5.10.0",
     "@types/react-toggle": "^4.0.2",

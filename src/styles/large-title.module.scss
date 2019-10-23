@@ -10,6 +10,36 @@
    color: var(--black);
 }
 
+.largeWorkTitlePlay {
+   display: inline-block;
+   text-align: left;
+   // letter-spacing: 0.25px;
+   font-weight: 500;
+   width: 100%;
+   color: var(--black);
+}
+
+.play_wrapper {
+   display: flex;
+   height: 100vh;
+   justify-content: space-between;
+   flex-direction: column;
+   pointer-events: none;
+}
+
+.play_wrapper_scroller {
+   pointer-events: none;
+}
+
+.play_animation {
+   transition: all 0.2s linear;
+}
+
+.top_h3_animation {
+   @extend .play_animation;
+   transform-origin: bottom left;
+}
+
 .center {
    text-align: center;
 }

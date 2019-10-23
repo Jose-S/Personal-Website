@@ -159,7 +159,10 @@ const Header = () => {
             return (
               <header
                 className={`${styles.main_menu_wrapper} ${
-                  path === "/" && isDesktop ? styles.header_fixed : ""
+                  (path === "/" || path === "/play" || path === "/play/") &&
+                  isDesktop
+                    ? styles.header_fixed
+                    : ""
                 }`}
               >
                 <div className={styles.main_menu_inner}>
