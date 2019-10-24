@@ -115,6 +115,8 @@ function getSize(px) {
       return styles.icon__xs
     case "24px":
       return styles.icon__sm
+    case "28px":
+      return styles.icon__mds
     case "32px":
       return styles.icon__md
     case "48px":

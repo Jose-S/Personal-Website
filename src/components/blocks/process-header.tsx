@@ -29,7 +29,7 @@ const ProcessHeader: React.FC<IWPGBlock> = props => {
     <Element className={`wpg-block ${styles.wrapper}`} name={process_name}>
       {/* <div className={`wpg-block ${styles.wrapper}`}> */}
       <div className={styles.outer_circle}>
-        <Icon src={icon} size="32px"></Icon>
+        <Icon src={icon} size="28px"></Icon>
       </div>
 
       <h6 className={styles.header_title}>{process_name}</h6>

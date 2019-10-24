@@ -3,6 +3,7 @@
 :root {
    --icon-xs: 16px;
    --icon-sm: 24px;
+   --icon-mds: 28px;
    --icon-md: 32px;
    --icon-lg: 48px;
    --icon-xl: 64px;
@@ -32,6 +33,11 @@
 .icon__sm {
    @include iconWrapper;
    font-size: var(--icon-sm);
+}
+
+.icon__mds {
+   @include iconWrapper;
+   font-size: var(--icon-mds);
 }
 
 .icon__md {
