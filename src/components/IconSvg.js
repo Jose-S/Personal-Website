@@ -29,30 +29,45 @@ const Icon = ({ src, size = "" }) => {
   console.log("ICON URL PRE", src, typeof src)
 
   const { title, url } = src
-  const strURL = `../../${src}`
+  const strURL = `../../${typeof src === `string` ? src : title + ".svg"}`
   // Type chck if its an object
-  console.log("ICON URL", url)
+  console.log("ICON URL", title, url, strURL)
   // Create an SVG React Component
   return (
     <ReactSVG
       title={title}
-      src={typeof src === `string` ? strURL : url}
+      // CURRENTLY ALL SVG FILES ARE RENDERED USING THE STATIC FOLDER
+      // SO NO NEED TO USE THE URL
+      // src={typeof src === `string` ? strURL : url}
+      src={strURL}
       fallback={() => (
+        // SHOULD NOT BE REACHED USING THE CURRENT SET UP
         <img
-          src={IconPlaceholder}
+          src={strURL ? strURL : IconPlaceholder}
           className={styles.icon}
           alt="Placeholder Icon"
         />
       )}
-      loading={() => <span>Loading</span>}
-      afterInjection={postLoad}
+      loading={() => (
+        <span>
+          <img
+            src={IconPlaceholder}
+            className={styles.icon}
+            alt="Loading Icon"
+          />
+        </span>
+      )}
+      // CURRENTLY NOT USED AS SVGS ARE RENDERED STATICLY USING THE STATIC FOLDER
+      // afterInjection={typeof src === `string` ? () => {} : postLoad}
       beforeInjection={preLoad}
       className={getSize(size)}
       wrapper="span"
+      // onError={() => console.log("ERROR FOR CORS")}
     />
   )
 }
 
+// CURRENTLY NOT USED (MIGHT BE IN THE FUTURE)
 // Post Load
 // Adds attributes to svg after load
 function postLoad(error, svg) {
@@ -63,6 +78,7 @@ function postLoad(error, svg) {
   let paths = svg.getElementsByTagName("path")
 
   // Adds diffrentstyles to svg paths depending on the number of paths
+
   switch (paths.length) {
     case 1:
       resetClass(paths[0], styles.light_icon_color)
