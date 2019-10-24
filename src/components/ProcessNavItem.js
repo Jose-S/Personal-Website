@@ -23,7 +23,7 @@ const ProcessNavItem = ({ name, icon }) => {
   return (
     <Link to={name} smooth={true} className={styles.nav_item_wrapper}>
       <div className={styles.nav_item_box}>
-        <Icon src={icon.filename} size={isMobile ? "32px" : "64px"} />
+        <Icon src={icon.filename} size={isMobile ? "32px" : "48px"} />
         <p
           className={`${styles.nav_item_label}, ${
             isMobile ? "" : "text--xs-body-two"
