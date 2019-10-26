@@ -1,6 +1,10 @@
 /**
- * This file creates a list of project items to display
+ * This file creates a list of play items to display
  * They are quieried from wordpress
+ *
+ * Eventhough this is similar to the project items compoonent, I
+ * separated it because of potential future implementations
+ * in which I can filter the queried play projects.
  */
 
 // Boiler
@@ -12,12 +16,14 @@ import ProjectItem from "./ProjectItem"
 import styles from "../styles/project-item.module.scss"
 
 // WP Projects are queried in accending order based on order ACF
-const ProjectItems = () => {
+const PlayItems = () => {
   return (
     <StaticQuery
       query={graphql`
         {
-          allWordpressWpProject(sort: { fields: [acf___order], order: ASC }) {
+          allWordpressWpExperiment(
+            sort: { fields: [acf___order], order: ASC }
+          ) {
             edges {
               node {
                 id
@@ -27,6 +33,9 @@ const ProjectItems = () => {
                 featured_media {
                   source_url
                 }
+                acf {
+                  order
+                }
               }
             }
           }
@@ -34,11 +43,11 @@ const ProjectItems = () => {
       `}
       render={props => (
         <div className={styles.item_grid}>
-          {props.allWordpressWpProject.edges.map(projectItem => (
+          {props.allWordpressWpExperiment.edges.map(playItem => (
             <ProjectItem
-              key={projectItem.node.id}
-              props={projectItem.node}
-              header={"work"}
+              key={playItem.node.id}
+              props={playItem.node}
+              header={"play"}
             ></ProjectItem>
           ))}
         </div>
@@ -47,4 +56,4 @@ const ProjectItems = () => {
   )
 }
 
-export default ProjectItems
+export default PlayItems

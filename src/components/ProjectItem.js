@@ -40,7 +40,7 @@ class ProjectItem extends Component {
         distance={16}
       >
         {/* Link to Work Project if pressed */}
-        <Link to={`/work/${slug}`}>
+        <Link to={`/${this.props.header}/${slug}`}>
           <div className={styles.container}>
             <img
               className={

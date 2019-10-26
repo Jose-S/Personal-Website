@@ -17,7 +17,6 @@ import Layout from "../components/layout"
 // import WPGBlocks from "react-gutenberg"
 import { WPGBlock } from "react-gutenberg"
 import GetCustomBlock from "../components/blocks"
-import ProjectItems from "../components/ProjectItems"
 
 import styles from "../styles/large-title.module.scss"
 import "../styles/Global/layout.scss"
@@ -26,6 +25,7 @@ import Header from "../components/Header"
 
 import { Stickyroll } from "@stickyroll/stickyroll"
 import { useIsMobile } from "../components/Responsive"
+import PlayItems from "../components/PlayItems"
 
 function mapRange(val, low1, high1, low2, high2) {
   return low2 + ((high2 - low2) * (val - low1)) / (high1 - low1)
@@ -177,7 +177,7 @@ const PlayPage = () => {
                 )
               }}
             </Stickyroll>
-            <ProjectItems />
+            <PlayItems />
           </>
         )}
       />

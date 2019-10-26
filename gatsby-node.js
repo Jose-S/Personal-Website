@@ -71,6 +71,22 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpExperiment {
+        edges {
+          node {
+            id
+            title
+            slug
+            acf {
+              subtitle
+              overview
+              challenges
+              timeline
+              skills
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -80,7 +96,11 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Access query results via object destructuring
-  const { allWordpressPage, allWordpressWpProject } = result.data
+  const {
+    allWordpressPage,
+    allWordpressWpProject,
+    allWordpressWpExperiment,
+  } = result.data
 
   // Create Page pages.
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -113,6 +133,21 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/work/${edge.node.slug}`,
       component: slash(projectTemplate),
+      context: edge.node,
+    })
+  })
+
+  // PLAY PROJECT TEMPLATES
+
+  const experimentTemplate = path.resolve(`./src/templates/experiment.js`)
+  // We want to create a detailed page for each post node.
+  // The path field stems from the original WordPress link
+  // and we use it for the slug to preserve url structure.
+  // The Post ID is prefixed with 'POST_'
+  allWordpressWpExperiment.edges.forEach(edge => {
+    createPage({
+      path: `/play/${edge.node.slug}`,
+      component: slash(experimentTemplate),
       context: edge.node,
     })
   })
