@@ -15,7 +15,7 @@ import styles from "../styles/project-overview.module.scss"
 const PlayOverview = props => {
   // Get all acf variables
   const { title, acf } = props.props
-  const { subtitle, overview, challenges, skills, timeline } = acf
+  const { image, subtitle, overview, challenges, skills, timeline, link } = acf
 
   return (
     <div>
@@ -30,7 +30,18 @@ const PlayOverview = props => {
       <div className={styles.split_container}>
         <div>
           <h5 className={styles.overview_label}>Overview</h5>
-          <p className={styles.overview_p}>{overview}</p>
+          <p className={styles.overview_p}>
+            {overview}
+            {link ? (
+              <span>
+                <a className={styles.project_link} href={link}>
+                  &nbsp;Visit live site
+                </a>
+              </span>
+            ) : (
+              <></>
+            )}
+          </p>
           <h5 className={styles.overview_label}>Challenges</h5>
           <p className={styles.overview_p}>{challenges}</p>
           <h5 className={styles.overview_label}>Skills</h5>
@@ -42,11 +53,11 @@ const PlayOverview = props => {
         </div>
 
         {/* ANIMATED IMAGE */}
-        {/* <img
-          src={ui_gif.source_url}
-          className={styles.overview_img}
+        <img
+          src={image.source_url}
+          className={styles.overview_play_img}
           alt="Experiment Overview Media File"
-        ></img> */}
+        ></img>
       </div>
     </div>
   )

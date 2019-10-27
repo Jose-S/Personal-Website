@@ -83,6 +83,10 @@ exports.createPages = async ({ graphql, actions }) => {
               challenges
               timeline
               skills
+              link
+              image {
+                source_url
+              }
             }
           }
         }

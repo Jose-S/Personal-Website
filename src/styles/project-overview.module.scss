@@ -16,6 +16,11 @@
    color: var(--color-text-subtitle);
 }
 
+.overview_play_img {
+   width: auto;
+}
+
+
 .overview_img {
    position: absolute;
    right: -450px;
@@ -41,6 +46,32 @@
    color: var(--color-secondary);
 }
 
+.project_link {
+
+   text-decoration: none;
+   font-weight: 600;
+
+   // Unvisited link
+   &:link {
+      color: var(--black);
+   }
+
+   // Visited link
+   &:visited {
+      color: var(--black);
+   }
+
+   //  Mouse Over Link
+   &:hover {
+      color: var(--color-primary);
+   }
+
+   // Selected link
+   &:active {
+      color: var(--color-primary);
+   }
+}
+
 @include breakpoint(sm) {
    .split_container {
       // all: initial;
@@ -53,5 +84,13 @@
       right: 0%;
       width: 100%;
       height: auto;
+   }
+
+}
+
+@include breakpoint(md) {
+
+   .overview_play_img {
+      width: 100%;
    }
 }
