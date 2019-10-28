@@ -51,13 +51,16 @@ const PlayOverview = props => {
           {/* <h5 className={styles.overview_label}>Category</h5> */}
           {/* <p className={styles.overview_p}>{category}</p> */}
         </div>
-
         {/* ANIMATED IMAGE */}
-        <img
-          src={image.source_url}
-          className={styles.overview_play_img}
-          alt="Experiment Overview Media File"
-        ></img>
+        {image ? (
+          <img
+            src={image.source_url}
+            className={styles.overview_play_img}
+            alt="Experiment Overview Media File"
+          ></img>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   )

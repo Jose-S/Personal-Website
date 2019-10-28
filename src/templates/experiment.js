@@ -25,14 +25,15 @@ function setContent(pageContext) {
     return (
       <>
         <PlayOverview props={pageContext}></PlayOverview>
+        <hr />
         {/* Creates a Div containing all the Wordpress Blocks mapped to areact
         component. Uses the GetCustomBlock function to map WP to React  */}
-        {/* <div className={styles.content_container}>
+        <div className={styles.content_container}>
           <WPGBlocks
             blocks={pageContext.blocks}
             mapToBlock={GetCustomBlock}
           ></WPGBlocks>
-        </div> */}
+        </div>
       </>
     )
   } else {

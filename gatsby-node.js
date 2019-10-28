@@ -88,6 +88,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 source_url
               }
             }
+            blocks {
+              blockName
+              innerHTML
+              attrs {
+                process_name
+                process_icon
+              }
+            }
           }
         }
       }
