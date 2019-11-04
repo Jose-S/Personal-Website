@@ -248,3 +248,33 @@ ol {
   animation: 1.25s linear 0s 1 opacityLoad;
 
 }
+
+h3 a {
+
+  text-decoration: none;
+  cursor: pointer;
+
+  // Unvisited link
+  &:link {
+    cursor: pointer;
+    color: var(--color-primary);
+  }
+
+  // Visited link
+  &:visited {
+    cursor: pointer;
+    color: var(--color-primary);
+  }
+
+  //  Mouse Over Link
+  &:hover {
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+
+  // Selected link
+  &:active {
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+}
