@@ -38,6 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
             title
             slug
             acf {
+              order
               subtitle
               overview
               challenges
@@ -51,6 +52,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 image {
                   filename
                 }
+              }
+              placeholder_gallery {
+                id
               }
             }
             blocks {

@@ -14,6 +14,7 @@ import GetCustomBlock from "../components/blocks"
 import ProcessNavBar from "../components/ProcessNavBar"
 // STYLES
 import styles from "../styles/project.module.scss"
+import PlaceholderGallery from "../components/PlaceholderGallery"
 
 // ---------------- CODE ----------------------
 
@@ -39,6 +40,15 @@ function setContent(pageContext) {
             mapToBlock={GetCustomBlock}
           ></WPGBlocks>
         </div>
+
+        {/* If the project has placeholder image grid */}
+        {pageContext.acf.placeholder_gallery ? (
+          <PlaceholderGallery
+            projectIndex={parseInt(pageContext.acf.order) - 1}
+          />
+        ) : (
+          <></>
+        )}
       </>
     )
   } else {
