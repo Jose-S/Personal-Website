@@ -42,7 +42,10 @@ const viewStyle = {
 const CustomHeader = ({ innerProps, currentView, getStyles }) => {
   return (
     <div style={getStyles("header", innerProps)} {...innerProps}>
-      <h4 style={{ color: "var(--color-primary)" }}>{currentView.title}</h4>
+      <h4
+        style={{ color: "var(--color-primary)" }}
+        dangerouslySetInnerHTML={{ __html: currentView.title }}
+      ></h4>
     </div>
   )
 }
@@ -51,8 +54,14 @@ const FooterCaption = ({ innerProps, currentView, getStyles }) => {
   const { title, caption } = currentView
   return (
     <span>
-      <h3 style={{ color: "var(--color-primary-light)" }}>{title}</h3>
-      <p style={getStyles("footerCaption", innerProps)}>{caption}</p>
+      <h3
+        style={{ color: "var(--color-primary-light)" }}
+        dangerouslySetInnerHTML={{ __html: title }}
+      ></h3>
+      <p
+        style={getStyles("footerCaption", innerProps)}
+        dangerouslySetInnerHTML={{ __html: caption }}
+      ></p>
     </span>
   )
 }

@@ -3,49 +3,47 @@
 @import "./Global/media-queries.scss";
 
 .container:hover .caption_container {
-   opacity: 1;
-   transform: translateY(-100px);
+  opacity: 1;
+  transform: translateY(-100px);
 }
-
 
 .caption_container {
-   cursor: pointer;
-   height: 25%;
-   background: rgba(0, 0, 0, 0.7);
-   position: absolute;
-   opacity: 0;
-   bottom: -100px;
-   transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  height: 25%;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  opacity: 0;
+  bottom: -100px;
+  transition: all 0.2s ease-in-out;
 }
 
-
 .container {
-   position: relative;
-   overflow: hidden
+  position: relative;
+  overflow: hidden;
 }
 
 .caption {
-   margin: var(--space-unit);
-   color: white;
+  margin: var(--space-unit);
+  color: white;
 }
 
 .img_test {
-   transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .container:hover .img_test {
-   transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 @include breakpoint(sm) {
+  .caption_container {
+    opacity: 1;
+    bottom: 0px;
+    height: 75px;
+  }
 
-   .caption_container {
-      opacity: 1;
-      bottom: 0px;
-      height: 75px;
-   }
-
-   .caption_container:hover {
-      opacity: 1;
-   }
+  .caption_container:hover {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
