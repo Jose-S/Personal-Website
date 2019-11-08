@@ -8,5 +8,7 @@
     This site host my work and case studies. 
     Currently content is still being added.
   </p>
+  
+  <small>Readme under construction...</small>
   </div>
 
