@@ -1,5 +1,5 @@
 <div>
-  <h1>#My Portfolio Site</h1>
+  <h1>My Portfolio Site</h1>
   <p>
     A staticly generated site using Gatsby and React JS.
     Content is hosted on a headless Wordpress CMS.
