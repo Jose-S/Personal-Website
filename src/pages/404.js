@@ -19,7 +19,7 @@ const NotFoundPage = () => (
           className={`text--xxl ${styles.error_link}`}
           href="https://www.josesaravia.design"
         >
-          Please save Me!
+          Please save me!
         </a>
       </div>
     </div>
