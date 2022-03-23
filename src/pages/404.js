@@ -17,7 +17,7 @@ const NotFoundPage = () => (
         <h2 className={styles.error_text_line}>The sadness. 😭</h2>
         <a
           className={`text--xxl ${styles.error_link}`}
-          href="https://www.josesaravia.design"
+          href="https://www.iamjose.design"
         >
           Please save me!
         </a>
