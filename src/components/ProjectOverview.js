@@ -40,11 +40,13 @@ const ProjectOverview = props => {
         </div>
 
         {/* ANIMATED IMAGE */}
-        <img
-          src={ui_gif.source_url}
-          className={styles.overview_img}
-          alt="Project Overview Media File"
-        ></img>
+        <div>
+          <img
+            src={ui_gif.source_url}
+            className={styles.overview_img}
+            alt="Project Overview Media File"
+          ></img>
+         </div>
       </div>
     </div>
   )
