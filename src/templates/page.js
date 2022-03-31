@@ -14,6 +14,6 @@ export default ({ pageContext }) => <Layout>{getPage(pageContext)}</Layout>
 
 function getPage(pageContext) {
   console.log("TESTING PAGE CONTEXT")
-  console.log(pageContext)
+  console.log(pageContext.blocks)
   return <h2>{`${pageContext.title} Under Construction 🚧`}</h2>
 }
