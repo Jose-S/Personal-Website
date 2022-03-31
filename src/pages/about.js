@@ -14,8 +14,8 @@
  import Layout from "../components/layout"
  // import Image from "../components/image"
  // import SEO from "../components/seo"
- // import WPGBlocks from "react-gutenberg"
- import { WPGBlock } from "react-gutenberg"
+ import WPGBlocks from "react-gutenberg"
+//  import { WPGBlocks } from "react-gutenberg"
  import GetCustomBlock from "../components/blocks"
  
  import styles from "../styles/large-title.module.scss"
