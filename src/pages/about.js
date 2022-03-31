@@ -62,15 +62,12 @@
             console.log("ALL PROPS")
             console.log(props.allWordpressPage.edges[0].node.blocks)
             return (
-                <>
                 <div className={styles.content_container}>
                   <WPGBlocks
                     blocks={props.allWordpressPage.edges[0].node.blocks}
                     mapToBlock={GetCustomBlock}
                   ></WPGBlocks>
                 </div>
-                <h1>TESTING</h1>
-              </>
             )
          }
         }
