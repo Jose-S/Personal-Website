@@ -18,13 +18,16 @@ import styles from "../../styles/zoom-image.module.scss"
 const ZoomImageGrid: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
-
+  
+  console.log("ATRRIBUTES")
+  console.log(attrs)
+  
   const { grid_style, controler, is_toggle = false } = attrs as {
     grid_style: string
     controler: string
     is_toggle: boolean
   }
-
+  
   const zoomImages = JSON.parse(decodeURI(controler))
 
   // Returns an array containing Zoom Image elements
