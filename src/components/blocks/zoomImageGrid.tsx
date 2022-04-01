@@ -19,6 +19,9 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
   // Componnet Props and attributes
   const { attrs } = props
   
+   console.log("PROPS")
+  console.log(props)
+  
   console.log("ATRRIBUTES")
   console.log(attrs)
   
@@ -27,6 +30,9 @@ const ZoomImageGrid: React.FC<IWPGBlock> = props => {
     controler: string
     is_toggle: boolean
   }
+  
+  console.log("CONTROLLER")
+  console.log(controler)
   
   const zoomImages = JSON.parse(decodeURI(controler))
 
