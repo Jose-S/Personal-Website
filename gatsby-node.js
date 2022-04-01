@@ -99,7 +99,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 process_name
                 process_icon
                 grid_style
-                content_style
                 loading_image
                 display_image
                 loading_image_secondary
