@@ -50,6 +50,7 @@
 }
 
 .carousel_image_container {
+   position: relative;
    flex-grow: 1;
    margin-left: var(--space-md);
 }
@@ -111,7 +112,7 @@
 
 .carousel_buttons_left {
    @extend .carousel_buttons;
-   left: 15%;
+   left: 1.5%;
 }
 
 .carousel_buttons_right {
