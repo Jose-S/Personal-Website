@@ -42,12 +42,12 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
     controler,
     selected_item = 0,
     on_change = (current: number) => console.log(`Current Slide: ${current}`),
-    caption = [],
+    captions = [],
   } = attrs as {
     controler: string
     selected_item: number
     on_change: Function
-    caption: Array<String>
+    captions: Array<String>
   }
 
   // Tracks the Current Slide (React Hook)
@@ -157,7 +157,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
   }
 
   console.log("Captions")
-  console.log(caption)
+  console.log(captions)
   console.log(props.caption)
   console.log(imgList)
     
@@ -206,7 +206,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
         {
           props.blockName == "lazyblock/image-carousel" &&
           <div>
-            <h4>{caption[currentSlide]}</h4>
+            <h4>{captions[currentSlide]}</h4>
           </div>
         }
       </CarouselProvider>
