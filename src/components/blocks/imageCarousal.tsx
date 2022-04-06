@@ -158,6 +158,7 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
 
   console.log("Captions")
   console.log(captions)
+    console.log(props)
     
   return (
     <div className={`wpg-block ${styles.carousel_container}`}>
