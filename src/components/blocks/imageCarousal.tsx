@@ -198,6 +198,12 @@ const ImageCarousal: React.FC<IWPGBlock> = props => {
         </ButtonNext>
         {/* INDICATOR DOTS */}
         {CarouselIndicator()}
+        {
+          props.blockName == "lazyblock/image-carousel" &&
+          <div>
+            <h4>{captions[currentSlide]}</h4>
+          </div>
+        }
       </CarouselProvider>
     </div>
   )
